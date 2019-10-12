@@ -1,11 +1,12 @@
-import { combineReducers, createStore, applyMiddleware } from 'redux';
+import { createStore, applyMiddleware } from 'redux';
 import thunk from 'redux-thunk';
-import { routerReducer, routerMiddleware } from 'react-router-redux';
-import createHistory from 'history/createBrowserHistory';
 import  { composeWithDevTools } from 'redux-devtools-extension';
+import { routerMiddleware } from 'connected-react-router'
+import { createBrowserHistory } from 'history'
+import createRootReducer from './reducers'
 
 const env: string = process.env.NODE_ENV || 'development';
-const history = createHistory();
+export const history = createBrowserHistory();
 const middlewares: Array<any> = [
   thunk,
   routerMiddleware(history),
@@ -16,16 +17,12 @@ if (env === 'development') {
   middlewares.push(logger);
 }
 
-const reducer = combineReducers({
-  routing: routerReducer,
-});
 const store = (initialState?: Object) => {
   const storeMiddleware = applyMiddleware(...middlewares);
   return createStore(
-    reducer,
+    createRootReducer(history),
     env === 'development' ? composeWithDevTools(storeMiddleware) : storeMiddleware,
   )
 }
 
-export { history };
 export default store();
