@@ -1,16 +1,17 @@
 import React from 'react';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
-import * as pages from './pages';
+import * as styled from './style';
+import * as pages from 'pages';
 
 const App:React.FC = () => {
   return (
-    <div className="App">
+    <styled.Wrapper>
       <Router>
         <Switch>
           <Route exact path='/' component={pages.Chat} />
         </Switch>
       </Router>
-    </div>
+    </styled.Wrapper>
   );
 }
 
