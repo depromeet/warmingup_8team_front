@@ -2,7 +2,7 @@ import React from 'react';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import * as pages from './pages';
 
-const App: React.FC = () => {
+const App:React.FC = () => {
   return (
     <div className="App">
       <Router>
