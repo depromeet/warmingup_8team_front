@@ -10,9 +10,8 @@ import * as serviceWorker from './serviceWorker';
 ReactDOM.render(
   <Provider store={store}>
     <ConnectedRouter history={history}>
-      <App />
-    </ConnectedRouter>
-  </Provider>,
-  document.getElementById('root')
+//      <App />
+//    </ConnectedRouter>
+//  </Provider>,
 );
 serviceWorker.unregister();
