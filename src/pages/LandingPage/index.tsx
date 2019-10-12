@@ -1,5 +1,5 @@
 import React from 'react';
-import Login from '../../components/Login';
+import { KakaoLogin } from 'components';
 
 const LandingPage:React.FC = _ => {
 
@@ -7,7 +7,10 @@ const LandingPage:React.FC = _ => {
     <div>
       <h1>KKIROOK</h1>
       <div>설명</div>
-      <Login/>
+      <KakaoLogin
+        onSuccess={() => {}}
+        onFailure={() => {}}
+      />
     </div>
   );
 };
