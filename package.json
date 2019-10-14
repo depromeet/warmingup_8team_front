@@ -29,7 +29,9 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "storybook": "start-storybook -p 9001 -c .storybook"
+    "storybook": "start-storybook -p 9001 -c .storybook",
+    "deploy-storybook": "storybook-to-ghpages",
+    "deploy": "aws s3 sync ./build s3://kkirook --exclude './build/.*' --profile=datepop-web"
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -52,6 +54,7 @@
     "@storybook/addon-knobs": "^5.2.3",
     "@storybook/addon-viewport": "^5.2.3",
     "@storybook/react": "^5.2.3",
+    "@storybook/storybook-deployer": "^2.8.1",
     "@types/storybook__react": "^4.0.2",
     "awesome-typescript-loader": "^5.2.1",
     "babel-loader": "^8.0.6",
