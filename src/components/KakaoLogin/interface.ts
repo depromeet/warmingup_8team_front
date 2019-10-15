@@ -3,6 +3,7 @@ export interface Props {
   borderRadius?: number,
   fontSize?: number,
   height?: number,
+  width?: number,
   onSuccess: (result: object) => void,
   onFailure: (error: any) => void,
 }
@@ -12,6 +13,7 @@ export interface Style {
   borderRadius?: number,
   fontSize?: number,
   height?: number,
+  width?: number,
 }
 
 export declare const Kakao: any;

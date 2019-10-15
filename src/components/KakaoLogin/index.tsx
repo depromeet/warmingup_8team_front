@@ -4,12 +4,13 @@ import * as styled from './style';
 
 const KakaoLogin:React.FC<Props> = ({
   bold=true,
-  borderRadius=25,
-  fontSize=14,
-  height=50,
+  borderRadius=4,
+  fontSize=16,
+  height=48,
+  width=199,
   onSuccess,
   onFailure,
-  children,
+  children="카카오톡으로 시작하기",
 }) => {
   useEffect(() => {
     const kakaoKey: string = '';
@@ -51,7 +52,7 @@ const KakaoLogin:React.FC<Props> = ({
         fail: onFailure,
       });
     }
-  }
+  };
 
   return (
     <styled.Button
@@ -59,6 +60,7 @@ const KakaoLogin:React.FC<Props> = ({
       borderRadius={borderRadius}
       fontSize={fontSize}
       height={height}
+      width={width}
       onClick={() => onLogin()}
     >
       {children}
