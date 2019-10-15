@@ -8,12 +8,13 @@ const App:React.FC = () => {
     <styled.Wrapper>
       <Router>
         <Switch>
+          <Route exact path='/sign-up-complete' component={pages.SignUpComplete} />
           <Route exact path='/chat' component={pages.Chat} />
           <Route exact path='/' component={pages.LandingPage} />
         </Switch>
       </Router>
     </styled.Wrapper>
   );
-}
+};
 
 export default App;
