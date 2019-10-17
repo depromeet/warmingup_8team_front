@@ -1,8 +1,12 @@
 import React from 'react';
 import * as styled from "./style";
-import Header from "../../components/Header";
+import {Button, Header} from 'components';
 
 const SignUpComplete:React.FC = _ => {
+
+  const linkToPath = (path: string) => {
+    window.location.assign(path);
+  };
 
   return (
     <styled.SignUpComplete>
@@ -15,13 +19,26 @@ const SignUpComplete:React.FC = _ => {
         지금바로 가족들과 대화할<br/>
         KKIROOK CHAT 방을 시작만들어보세요!
       </styled.Content>
-      
-      <styled.Button>
-        서비스로 이동  
-      </styled.Button>
-      <styled.Button>
-        채팅방 생성하기
-      </styled.Button>
+
+      <Button
+        bold={true}
+        borderRadius={4}
+        fontSize={16}
+        height={48}
+        width={140}
+        margin={"0 10.5px"}
+        text={"서비스로 이동"}
+        handleClick={()=>linkToPath('/chat')}
+      />
+      <Button
+        bold={true}
+        borderRadius={4}
+        fontSize={16}
+        height={48}
+        width={140}
+        text={"채팅방 생성하기"}
+        handleClick={()=>linkToPath('/chat')}
+      />
     </styled.SignUpComplete>
   )
 };

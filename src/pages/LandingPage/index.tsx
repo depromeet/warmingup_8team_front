@@ -1,7 +1,7 @@
 import React from 'react';
-import { KakaoLogin } from 'components';
+import { KakaoLogin, Header } from 'components';
 import * as styled from "./style";
-import Header from "../../components/Header";
+import {Link} from "react-router-dom";
 
 const LandingPage:React.FC = _ => {
 
@@ -20,7 +20,7 @@ const LandingPage:React.FC = _ => {
         인간에 때에, 눈에 사막이다. 이 그들은 없으면 말이다.
       </styled.Content>
       <KakaoLogin
-        onSuccess={() => {}}
+        onSuccess={() => <Link to={"/sign-up-Complete"}/>}
         onFailure={() => {}}
       />
     </styled.LandingPage>
