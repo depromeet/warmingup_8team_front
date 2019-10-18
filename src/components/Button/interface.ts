@@ -6,6 +6,7 @@ export interface Props {
   width?: number,
   margin?: string,
   text: string,
+  path?: string,
   handleClick?: () => void,
 }
 

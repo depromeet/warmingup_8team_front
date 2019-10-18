@@ -8,9 +8,10 @@ const App:React.FC = () => {
     <styled.Wrapper>
       <Router>
         <Switch>
-          <Route exact path='/sign-up-complete' component={pages.SignUpComplete} />
-          <Route exact path='/chat' component={pages.Chat} />
           <Route exact path='/' component={pages.LandingPage} />
+          <Route exact path='/sign-up-complete' component={pages.SignUpComplete} />
+          <Route exact path='/create-chat' component={pages.CreateChat} />
+          <Route exact path='/chat' component={pages.Chat} />
         </Switch>
       </Router>
     </styled.Wrapper>

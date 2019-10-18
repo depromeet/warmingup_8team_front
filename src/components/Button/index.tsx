@@ -11,11 +11,12 @@ const Button:React.FC<Props> = ({
   width,
   margin,
   text,
+  path,
   handleClick,
 }) => {
-
   return (
-    <Link to='/chat'>
+    path?
+    <Link to={path}>
       <styled.Button
         bold={bold}
         borderRadius={borderRadius}
@@ -23,11 +24,23 @@ const Button:React.FC<Props> = ({
         height={height}
         width={width}
         margin={margin}
-        onClick={()=>handleClick}
-      >
+        onClick={handleClick}
+        >
         {text}
       </styled.Button>
     </Link>
+      :
+    <styled.Button
+      bold={bold}
+      borderRadius={borderRadius}
+      fontSize={fontSize}
+      height={height}
+      width={width}
+      margin={margin}
+      onClick={handleClick}
+    >
+      {text}
+    </styled.Button>
   )
 };
 

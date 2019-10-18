@@ -3,11 +3,6 @@ import * as styled from "./style";
 import {Button, Header} from 'components';
 
 const SignUpComplete:React.FC = _ => {
-
-  const linkToPath = (path: string) => {
-    window.location.assign(path);
-  };
-
   return (
     <styled.SignUpComplete>
       <Header/>
@@ -28,7 +23,7 @@ const SignUpComplete:React.FC = _ => {
         width={140}
         margin={"0 10.5px"}
         text={"서비스로 이동"}
-        handleClick={()=>linkToPath('/chat')}
+        path={'/chat'}
       />
       <Button
         bold={true}
@@ -37,7 +32,7 @@ const SignUpComplete:React.FC = _ => {
         height={48}
         width={140}
         text={"채팅방 생성하기"}
-        handleClick={()=>linkToPath('/chat')}
+        path={'/create-chat'}
       />
     </styled.SignUpComplete>
   )
