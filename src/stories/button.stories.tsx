@@ -10,12 +10,12 @@ export default {
 export const KakaoLoginButton = () => (
   <KakaoLogin
     bold={boolean('Font Bold', true)}
-    borderRadius={number('Border Radius', 25)}
-    fontSize={number('Font Size', 14)}
-    height={number('Height', 50)}
+    borderRadius={number('Border Radius', 4)}
+    fontSize={number('Font Size', 16)}
+    height={number('Height', 48)}
     onSuccess={() => {}}
     onFailure={() => {}}
   >
-    {text('Text', '카카오 로그인')}
+    {text('Text', '카카오톡으로 시작하기')}
   </KakaoLogin>
 );
