@@ -4,6 +4,7 @@ import {Props} from "./interface";
 import {Link} from "react-router-dom";
 
 const Button:React.FC<Props> = ({
+  disabled,
   bold,
   borderRadius,
   fontSize,
@@ -11,33 +12,44 @@ const Button:React.FC<Props> = ({
   width,
   margin,
   text,
+  color,
+  background,
+  cursor,
   path,
-  handleClick,
+  onClick,
 }) => {
   return (
     path?
     <Link to={path}>
       <styled.Button
+        disabled={disabled}
         bold={bold}
         borderRadius={borderRadius}
         fontSize={fontSize}
         height={height}
         width={width}
         margin={margin}
-        onClick={handleClick}
+        color={color}
+        background={background}
+        cursor={cursor}
+        onClick={onClick}
         >
         {text}
       </styled.Button>
     </Link>
       :
     <styled.Button
+      disabled={disabled}
       bold={bold}
       borderRadius={borderRadius}
       fontSize={fontSize}
       height={height}
       width={width}
       margin={margin}
-      onClick={handleClick}
+      color={color}
+      background={background}
+      cursor={cursor}
+      onClick={onClick}
     >
       {text}
     </styled.Button>

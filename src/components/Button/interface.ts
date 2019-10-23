@@ -1,4 +1,5 @@
 export interface Props {
+  disabled?: boolean,
   bold?: boolean,
   borderRadius?: number,
   fontSize?: number,
@@ -6,8 +7,11 @@ export interface Props {
   width?: number,
   margin?: string,
   text: string,
+  color?: string,
+  background?: string,
+  cursor?: string,
   path?: string,
-  handleClick?: () => void,
+  onClick?: () => void,
 }
 
 export interface Style {
@@ -17,4 +21,7 @@ export interface Style {
   height?: number,
   width?: number,
   margin?: string,
+  color?: string,
+  background?: string,
+  cursor?: string,
 }
