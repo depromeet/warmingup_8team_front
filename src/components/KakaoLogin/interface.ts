@@ -6,6 +6,7 @@ export interface Props {
   width?: number,
   onSuccess: (result: object) => void,
   onFailure: (error: any) => void,
+  kakaoKey?: string,
 }
 
 export interface Style {
@@ -16,4 +17,8 @@ export interface Style {
   width?: number,
 }
 
-export declare const Kakao: any;
+declare global {
+  interface Window {
+    Kakao: any;
+  }
+}
