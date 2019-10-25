@@ -1,9 +1,10 @@
 import React from 'react';
 import { KakaoLogin, Header } from 'components';
 import * as styled from "./style";
-import {Link} from "react-router-dom";
+import {useHistory} from "react-router-dom";
 
 const LandingPage:React.FC = _ => {
+  let history = useHistory();
 
   return (
     <styled.LandingPage>
@@ -20,7 +21,7 @@ const LandingPage:React.FC = _ => {
         인간에 때에, 눈에 사막이다. 이 그들은 없으면 말이다.
       </styled.Content>
       <KakaoLogin
-        onSuccess={() => <Link to={"/sign-up-Complete"}/>}
+        onSuccess={() => history.push('/sign-up-complete')}
         onFailure={() => {}}
       />
     </styled.LandingPage>

@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import * as styled from "./style";
 import {Button, Header} from 'components';
 import { useHistory } from "react-router-dom";
@@ -9,12 +9,13 @@ const CreateChat:React.FC = _ => {
   const [startBtn, setStartBtn] = useState(false);
   let history = useHistory();
 
-  const onChangeChatName = (e: React.FormEvent<HTMLInputElement>) => {
-    setChatName(e.currentTarget.value);
+  useEffect(() => {
     if (chatName && chatName.length <= 12 && imgFile) {
       setStartBtn(true);
+      return;
     }
-  };
+    setStartBtn(false);
+  }, [chatName, imgFile]);
 
   const handleClick = () => {
     const fileInput: any = window.document.getElementById('file');
@@ -33,10 +34,6 @@ const CreateChat:React.FC = _ => {
         });
       };
       reader.readAsDataURL(file);
-
-      if (chatName && chatName.length <= 12 && imgFile) {
-        setStartBtn(true);
-      }
     }
   };
 
@@ -62,7 +59,7 @@ const CreateChat:React.FC = _ => {
         </styled.H2>
         <styled.NameInput
           value={chatName}
-          onChange={onChangeChatName}
+          onChange={e => setChatName(e.currentTarget.value)}
         />
         {(chatName.length > 12) ?
           (<styled.Error>
