@@ -40,7 +40,7 @@ const CreateChat:React.FC = _ => {
   const fileUpload = () => {
     // TODO 서버로 새로운 끼룩 챗 정보 보내기
     // chatName, imgFile, userInfo
-    history.push("/chat");
+    history.push('/create-chat-complete');
   };
 
   return (
