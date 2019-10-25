@@ -11,6 +11,7 @@ const App:React.FC = () => {
           <Route exact path='/' component={pages.LandingPage} />
           <Route exact path='/sign-up-complete' component={pages.SignUpComplete} />
           <Route exact path='/create-chat' component={pages.CreateChat} />
+          <Route exact path='/create-chat-complete' component={pages.CreateChatComplete} />
           <Route exact path='/chat' component={pages.Chat} />
         </Switch>
       </Router>
