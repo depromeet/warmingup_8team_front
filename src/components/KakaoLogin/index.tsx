@@ -1,8 +1,9 @@
 import React, { useEffect } from 'react';
 import { Props } from './interface';
 import * as styled from './style';
+import axios from 'axios';
 
-const KakaoLogin:React.FC<Props> = ({
+const KakaoLogin: React.FC<Props> = ({
   bold = true,
   borderRadius = 4,
   fontSize = 16,
@@ -11,14 +12,14 @@ const KakaoLogin:React.FC<Props> = ({
   onSuccess,
   onFailure,
   children = "카카오톡으로 시작하기",
-  kakaoKey = '',
+  kakaoKey = '4755b34fc859498f582ca9aab1facf37',
 }) => {
   useEffect(() => {
     ((d: Document, s: string, id: string, cb: () => void) => {
       const targetElement: (HTMLElement | null) = d.getElementById(id);
       if (!targetElement) {
         const collection: HTMLCollection = d.getElementsByTagName(s);
-        const el= collection[0];
+        const el = collection[0];
         const fjs = el;
 
         const script = document.createElement(s) as HTMLScriptElement;
@@ -45,6 +46,9 @@ const KakaoLogin:React.FC<Props> = ({
             url: '/v2/user/me',
             success: (profile: object) => {
               const result: object = { response, profile };
+              axios.post('/login', response).then(res => {
+                debugger;
+              })
               onSuccess(result);
             },
             fail: (error: any) => {
