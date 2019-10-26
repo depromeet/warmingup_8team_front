@@ -8,7 +8,7 @@ import App from 'App';
 import * as serviceWorker from './serviceWorker';
 import axios from 'axios'
 
-axios.defaults.baseURL = 'http://localhost:5000';
+axios.defaults.baseURL = 'http://localhost:5000'; // TODO: (clogic) baseURL은 configuration따라 바뀌도록 수정해야함
 axios.defaults.withCredentials = true;
 
 ReactDOM.render(
