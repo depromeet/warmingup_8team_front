@@ -1,16 +1,14 @@
 import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import * as styled from './style';
+import { useHistory } from "react-router-dom";
 import { RootState } from 'store/reducers/interface';
 import { logout } from 'store/reducers/user';
+import * as styled from './style';
 
-const Input: React.FC = () => {
+const Header: React.FC = () => {
   const isLoggedIn = useSelector((state: RootState) => state.user.isLoggedIn);
   const dispatch = useDispatch();
-
-  const onLogout = () => {
-    dispatch(logout());
-  };
+  const history = useHistory();
 
   return (
     <styled.Header>
@@ -21,7 +19,21 @@ const Input: React.FC = () => {
       <styled.Menu>
         {
           isLoggedIn ? (
-            <styled.MenuItem onClick={() => onLogout()}>
+            <styled.MenuItem onClick={() => history.push('/list')}>
+              채팅방 리스트
+            </styled.MenuItem>
+          ) : null
+        }
+        {
+          isLoggedIn ? (
+            <styled.MenuItem>
+              질문 설정
+            </styled.MenuItem>
+          ) : null
+        }
+        {
+          isLoggedIn ? (
+            <styled.MenuItem onClick={() => dispatch(logout())}>
               로그아웃
             </styled.MenuItem>
           ) : null
@@ -31,4 +43,4 @@ const Input: React.FC = () => {
   );
 };
 
-export default Input;
+export default Header;

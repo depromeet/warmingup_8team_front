@@ -12,6 +12,7 @@ const Routes:React.FC = _ => {
         <Route exact path='/create-chat' component={pages.CreateChat} />
         <Route exact path='/create-chat-complete' component={pages.CreateChatComplete} />
         <Route exact path='/chat' component={pages.Chat} />
+        <Route exact path='/list' component={pages.ChatList} />
       </Switch>
     </Router>
   );

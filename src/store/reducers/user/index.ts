@@ -1,23 +1,37 @@
+import { takeEvery } from 'redux-saga/effects';
+import { axios } from 'utils';
 import { State, UserState, Action } from './interface';
+
 
 const LOGIN_SUCCESS: string = 'user/LOGIN_SUCCESS';
 const LOGIN_FAILURE: string = 'user/LOGIN_FAILURE';
 const LOGOUT: string = 'user/LOGOUT';
+const FETCH_USER: string = 'user/FETCH_USER';
 
-
-function hasProfileStorage(): boolean {
-  const profile = localStorage.getItem('profile');
-  if (profile) {
-    const userId = JSON.parse(profile).id;
-    if (userId) {
-      return true;
-    }
+function hasCSRFToken():boolean {
+  console.log(11, document.cookie);
+  if (!document.cookie) {
+    return false;
   }
-  return false;
+  const xsrfCookies = document.cookie.split(';')
+    .map(c => c.trim())
+    .filter(c => c.startsWith('csrf='));
+  console.log(22, xsrfCookies, document.cookie);
+  if (xsrfCookies.length === 0) {
+    return false;
+  }
+
+  const token = decodeURIComponent(xsrfCookies[0].split('=')[1]);
+  console.log(33, token);
+  if (token.length === 0) {
+    return false;
+  }
+
+  return true;
 }
 
 const initialState: State = {
-  isLoggedIn: hasProfileStorage(),
+  isLoggedIn: hasCSRFToken(),
   isLoading: false,
   profile: {
     id: null,
@@ -31,7 +45,7 @@ const initialState: State = {
 
 export const login = (data: UserState) => {
   const { chatroom, ...profile } = data;
-  localStorage.setItem('profile', JSON.stringify(profile));
+  // localStorage.setItem('profile', JSON.stringify(profile));
   return {
     type: LOGIN_SUCCESS,
     data: profile,
@@ -39,8 +53,17 @@ export const login = (data: UserState) => {
 };
 
 export const logout = () => {
-  localStorage.removeItem('profile');
+  document.cookie = 'csrf=;';
   return { type: LOGOUT }
+};
+
+async function* fetchUser() {
+  const res = await axios.post('/login');
+  console.log(res);
+};
+
+export function* userSaga() {
+  yield takeEvery(FETCH_USER, fetchUser);
 };
 
 export default function userReducer (

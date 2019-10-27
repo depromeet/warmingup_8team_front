@@ -23,5 +23,16 @@ export const Menu = styled.div`
 `;
 
 export const MenuItem = styled.span`
+  font-size: 16px;
   cursor: pointer;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  color: #4a4a4a;
+
+  &:not(:last-child) {
+    margin-right: 24px;
+  }
 `;

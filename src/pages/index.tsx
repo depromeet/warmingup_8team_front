@@ -3,6 +3,7 @@ import SignUpComplete from './SignUpComplete';
 import CreateChat from './CreateChat';
 import CreateChatComplete from './CreateChatComplete';
 import Chat from './Chat';
+import ChatList from './ChatList';
 
 export {
   LandingPage,
@@ -10,4 +11,5 @@ export {
   CreateChat,
   CreateChatComplete,
   Chat,
+  ChatList,
 }
