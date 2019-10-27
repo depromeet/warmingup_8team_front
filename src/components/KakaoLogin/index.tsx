@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { Props, KakaoProfile, KakaoResponse, KakaoResult } from './interface';
+import { Props, KakaoResponse } from './interface';
 import * as styled from './style';
 import axios from 'axios';
 
@@ -42,17 +42,7 @@ const KakaoLogin: React.FC<Props> = ({
       window.Kakao.Auth.login({
         throughTalk: false,
         success: (response: KakaoResponse) => {
-          window.Kakao.API.request({
-            url: '/v2/user/me',
-            success: (profile: KakaoProfile) => {
-              const result: KakaoResult = { response, profile };
-              onSuccess(result);
-            },
-            fail: (error: any) => {
-              console.log(22, error);
-              onFailure(error);
-            },
-          });
+          onSuccess(response);
         },
         fail: onFailure,
       });

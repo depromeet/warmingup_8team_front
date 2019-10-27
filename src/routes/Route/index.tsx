@@ -16,7 +16,7 @@ const CutomRoute:React.FC<Props> = ({
 
   useEffect(() => {
     if (loginRequired && !isLoggedIn) {
-      setRedirectPath('/login');
+      setRedirectPath('/');
       setValid(false);
     }
   }, []);

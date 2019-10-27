@@ -1,15 +1,30 @@
 import React from 'react';
+import { useHistory } from "react-router-dom";
+import { useSelector, useDispatch } from 'react-redux';
 import { KakaoLogin, Header } from 'components';
-import * as styled from "./style";
-import {useHistory} from "react-router-dom";
 import { axios } from 'utils';
+import * as styled from "./style";
+import { RootState } from 'store/reducers/interface';
+import { login } from 'store/reducers/user';
 
 const LandingPage:React.FC = _ => {
   let history = useHistory();
+  const isLoggedIn = useSelector((state: RootState) => state.user.isLoggedIn);
+  const dispatch = useDispatch();
 
-  const loginSuccess = (result: any) => {
+  const loginSuccess = async (result: any) => {
     // history.push('/sign-up-complete');
-    console.log(33, result);
+    const { access_token } = result;
+    if (access_token) {
+      const res = await axios.post('/login', {
+        access_token,
+      });
+      const { data } = res;
+
+      if (data) {
+        dispatch(login(data));
+      }
+    }
   };
 
   return (
@@ -26,10 +41,15 @@ const LandingPage:React.FC = _ => {
         불러 청춘은 뛰노는 능히 든 위하여서. 보이는 작고 아니한 청춘 뜨거운지라, 오아이스도 어디 것이다.<br/>
         인간에 때에, 눈에 사막이다. 이 그들은 없으면 말이다.
       </styled.Content>
-      <KakaoLogin
-        onSuccess={(result) => loginSuccess(result)}
-        onFailure={() => {}}
-      />
+
+      {
+        !isLoggedIn ? (
+          <KakaoLogin
+            onSuccess={(result) => loginSuccess(result)}
+            onFailure={() => {}}
+          />
+        ) : null
+      }
     </styled.LandingPage>
   );
 };

@@ -6,11 +6,22 @@ export const Header = styled.div`
   box-shadow: 0 2px 8px 0 rgba(0, 0, 0, 0.16);
   background-color: #ffffff;
   text-align: left;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
 `;
 
 export const HeaderText = styled.div`
   font-size: 16px;
   font-weight: bold;
   color: #0f334e;
-  padding: 20px 26%;
+`;
+
+export const Menu = styled.div`
+
+`;
+
+export const MenuItem = styled.span`
+  cursor: pointer;
 `;

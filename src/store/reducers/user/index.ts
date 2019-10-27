@@ -1,31 +1,71 @@
-import { State, Action } from './interface';
+import { State, UserState, Action } from './interface';
 
-const LOGIN_LOADING: string = 'user/LOGIN_LOADING';
 const LOGIN_SUCCESS: string = 'user/LOGIN_SUCCESS';
 const LOGIN_FAILURE: string = 'user/LOGIN_FAILURE';
 const LOGOUT: string = 'user/LOGOUT';
 
+
+function hasProfileStorage(): boolean {
+  const profile = localStorage.getItem('profile');
+  if (profile) {
+    const userId = JSON.parse(profile).id;
+    if (userId) {
+      return true;
+    }
+  }
+  return false;
+}
+
 const initialState: State = {
-  isLoggedIn: false,
+  isLoggedIn: hasProfileStorage(),
   isLoading: false,
-  token: localStorage.getItem('token'),
+  profile: {
+    id: null,
+    email: null,
+    gender: null,
+    name: null,
+    profile_url: null,
+    thumbnail_url: null,
+  },
 };
 
-export const Login = () => ({
-  type: LOGIN_LOADING,
-});
+export const login = (data: UserState) => {
+  const { chatroom, ...profile } = data;
+  localStorage.setItem('profile', JSON.stringify(profile));
+  return {
+    type: LOGIN_SUCCESS,
+    data: profile,
+  }
+};
 
-export const logout = () => ({ type: LOGOUT });
+export const logout = () => {
+  localStorage.removeItem('profile');
+  return { type: LOGOUT }
+};
 
 export default function userReducer (
   state: State = initialState,
   action: Action,
 ): State {
   switch (action.type) {
-    case LOGIN_LOADING:
-      return state;
+    case LOGIN_SUCCESS:
+      return Object.assign({}, state, {
+        isLoggedIn: true,
+        isLoading: false,
+        profile: action.data
+      });
     case LOGOUT:
-      return state;
+      return Object.assign({}, state, {
+        isLoggedIn: false,
+        isLoading: false,
+        profile: {
+          id: null,
+          email: null,
+          gender: null,
+          name: null,
+          profile_url: null,
+          thumbnail_url: null,
+      }});
     default:
       return state;
   }
