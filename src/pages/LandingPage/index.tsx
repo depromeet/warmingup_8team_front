@@ -2,9 +2,15 @@ import React from 'react';
 import { KakaoLogin, Header } from 'components';
 import * as styled from "./style";
 import {useHistory} from "react-router-dom";
+import { axios } from 'utils';
 
 const LandingPage:React.FC = _ => {
   let history = useHistory();
+
+  const loginSuccess = (result: any) => {
+    // history.push('/sign-up-complete');
+    console.log(33, result);
+  };
 
   return (
     <styled.LandingPage>
@@ -21,7 +27,7 @@ const LandingPage:React.FC = _ => {
         인간에 때에, 눈에 사막이다. 이 그들은 없으면 말이다.
       </styled.Content>
       <KakaoLogin
-        onSuccess={() => history.push('/sign-up-complete')}
+        onSuccess={(result) => loginSuccess(result)}
         onFailure={() => {}}
       />
     </styled.LandingPage>
