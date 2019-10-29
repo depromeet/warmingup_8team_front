@@ -1,12 +1,10 @@
 import React from 'react';
 import * as styled from "./style";
-import {Button, Header} from 'components';
+import {Button} from 'components';
 
 const SignUpComplete:React.FC = _ => {
   return (
     <styled.SignUpComplete>
-      <Header/>
-
       <styled.Title>
         회원가입 완료
       </styled.Title>

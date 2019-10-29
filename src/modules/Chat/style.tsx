@@ -9,7 +9,7 @@ export const Wrapper = styled.div`
 `;
 
 export const AvatarContainer = styled.div`
-  width: 85px;
+  width: 75px;
   padding-left: 24px;
 `;
 

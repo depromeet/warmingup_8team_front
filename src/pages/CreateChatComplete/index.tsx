@@ -1,5 +1,5 @@
 import React from 'react';
-import {Button, Header} from 'components';
+import { Button } from 'components';
 import * as styled from "./style";
 import {useHistory} from "react-router-dom";
 
@@ -9,7 +9,6 @@ const LandingPage:React.FC = _ => {
   let chatUniqueValue = '{chatUniqueValue}';
   return (
     <div>
-      <Header/>
       <styled.Title>
         채팅방 생성이 완료되었습니다.
       </styled.Title>

@@ -13,9 +13,13 @@ export const Header = styled.div`
 `;
 
 export const HeaderText = styled.div`
-  font-size: 16px;
-  font-weight: bold;
-  color: #0f334e;
+  font-size: 18px;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: -1px;
+  color: #5057ef;
 `;
 
 export const Menu = styled.div`

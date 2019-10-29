@@ -1,7 +1,7 @@
 import React from 'react';
 import { useHistory } from "react-router-dom";
 import { useSelector, useDispatch } from 'react-redux';
-import { KakaoLogin, Header } from 'components';
+import { KakaoLogin } from 'components';
 import { axios } from 'utils';
 import * as styled from "./style";
 import { RootState } from 'store/reducers/interface';
@@ -29,8 +29,6 @@ const LandingPage:React.FC = _ => {
 
   return (
     <styled.LandingPage>
-      <Header/>
-
       <styled.Logo/>
       <styled.Title>
         타이틀 텍스트

@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import * as styled from "./style";
-import {Button, Header} from 'components';
+import { Button } from 'components';
 import { useHistory } from "react-router-dom";
 
 const CreateChat:React.FC = _ => {
@@ -45,7 +45,6 @@ const CreateChat:React.FC = _ => {
 
   return (
     <div>
-      <Header/>
       <styled.CreateChat>
         <styled.H1>
           새로운 끼룩 챗 생성하기

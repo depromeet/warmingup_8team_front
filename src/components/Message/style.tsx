@@ -6,11 +6,11 @@ export const Wrapper = styled.div`
   max-width: 470px;
   background-color: ${(props: StyleProps) => props.sender ? 'rgb(78, 91, 255)' : '#fff'};
   color: ${(props: StyleProps) => props.sender ? '#fff' : '#000'};
-  border-top-left-radius: ${(props: StyleProps) => props.sender ? '20px' : '0px !important'};
-  border-top-right-radius: ${(props: StyleProps) => !props.sender ? '20px' : '0px !important'};
+  border-top-left-radius: ${(props: StyleProps) => props.sender ? '24px' : '0px !important'};
+  border-top-right-radius: ${(props: StyleProps) => !props.sender ? '24px' : '0px !important'};
   display: inline-block;
-  padding: 21px 30px;
-  border-radius: 20px;
+  padding: 15px 30px;
+  border-radius: 24px;
   box-shadow: 0 2px 16px 0 rgba(0, 0, 0, 0.1);
 `;
 
