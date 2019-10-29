@@ -7,4 +7,8 @@ export const Wrapper = styled.div`
   * { font-family: 'Spoqa Han Sans', 'Spoqa Han Sans JP', 'Sans-serif'; }
   text-align: center;
   color: #333333;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 `;

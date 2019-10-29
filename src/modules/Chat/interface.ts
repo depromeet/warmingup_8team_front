@@ -2,7 +2,8 @@ export interface Props {
   sender?: boolean,
   message?: string,
   username: string,
-  time?: string,
+  image?: string,
+  timestamp?: string,
 };
 
 export interface StyleProps {

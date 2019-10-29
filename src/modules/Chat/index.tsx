@@ -1,22 +1,25 @@
 import React from 'react';
 import * as styled from './style';
 import { Props } from './interface';
-import { Message, Avatar } from 'components';
+import { Message, ImageMessage, Avatar } from 'components';
 
 const Chat: React.FC<Props> = ({
   sender = false,
   message = '',
   username = '디프만',
-  time = '11:30am',
+  image = '',
+  timestamp = '11:30am',
 }) => {
   return (
-    <styled.Wrapper>
+    <styled.Wrapper sender={sender}>
       {
         !sender ? (
           <styled.AvatarContainer>
             <Avatar />
           </styled.AvatarContainer>
-        ) : null
+        ) : (
+          <styled.Time sender={sender}>{timestamp}</styled.Time>
+        )
       }
       <styled.MessageContainer sender={sender}>
         <styled.MessageHeader sender={sender}>
@@ -25,14 +28,29 @@ const Chat: React.FC<Props> = ({
               <styled.User>{username}</styled.User>
             ) : null
           }
-          <styled.Time>{time}</styled.Time>
         </styled.MessageHeader>
         
-        <Message
-          message={message}
-          sender={sender}
-        />
+        {
+          message ? (
+            <Message
+              message={message}
+              sender={sender}
+            />
+          ) : (
+            <ImageMessage
+              url={image}
+              sender={sender}
+            />
+          )
+        }
+
       </styled.MessageContainer>
+      
+      {
+        !sender ? (
+          <styled.Time sender={sender}>{timestamp}</styled.Time>
+        ) : null
+      }
     </styled.Wrapper>
   );
 };
