@@ -14,7 +14,7 @@ const Header: React.FC = () => {
   return (
     <styled.Header>
       <styled.HeaderBox>
-      <img src={logo} alt={'logo'}/>
+      <styled.Logo src={logo} alt={'logo'}/>
       <styled.HeaderText>
         KKIROOK CHAT
       </styled.HeaderText>
