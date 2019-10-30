@@ -3,6 +3,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { useHistory } from "react-router-dom";
 import { RootState } from 'store/reducers/interface';
 import { logout } from 'store/reducers/user';
+import logo from '../../img/kkirook-logo.svg'
 import * as styled from './style';
 
 const Header: React.FC = () => {
@@ -12,6 +13,8 @@ const Header: React.FC = () => {
 
   return (
     <styled.Header>
+      <styled.HeaderBox>
+      <img src={logo} alt={'logo'}/>
       <styled.HeaderText>
         KKIROOK CHAT
       </styled.HeaderText>
@@ -39,6 +42,7 @@ const Header: React.FC = () => {
           ) : null
         }
       </styled.Menu>
+      </styled.HeaderBox>
     </styled.Header>
   );
 };

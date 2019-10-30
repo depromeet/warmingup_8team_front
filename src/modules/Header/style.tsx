@@ -12,7 +12,16 @@ export const Header = styled.div`
   justify-content: space-between;
 `;
 
-export const HeaderText = styled.div`
+export const HeaderBox = styled.div`
+  width: 960px;
+  margin: auto;
+`;
+
+export const Logo = styled.img`
+  vertical-align: top;
+`;
+
+export const HeaderText = styled.span`
   font-size: 18px;
   font-weight: normal;
   font-stretch: normal;
@@ -20,10 +29,12 @@ export const HeaderText = styled.div`
   line-height: normal;
   letter-spacing: -1px;
   color: #5057ef;
+  vertical-align: super;
+  margin-left: 9px;
 `;
 
-export const Menu = styled.div`
-
+export const Menu = styled.span`
+  float: right;
 `;
 
 export const MenuItem = styled.span`
