@@ -1,4 +1,4 @@
-import { ChatroomState } from "../chatroom/interface";
+import { ChatroomState } from "../chat/interface";
 
 export interface UserState {
   chatroom?: ChatroomState,

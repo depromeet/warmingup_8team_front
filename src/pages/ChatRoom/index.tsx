@@ -1,8 +1,9 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import { RootState } from 'store/reducers/interface';
 import io from 'socket.io-client';
 import axios from 'utils/axios';
+import { setMessage, setMessageList } from 'store/reducers/chat';
 import View from './view';
 
 const socket = io('http://localhost:5000');
@@ -10,29 +11,36 @@ const socket = io('http://localhost:5000');
 const ChatRoom: React.FC = _ => {
   const [title, setTitle] = useState('우리집');
   const [url, setUrl] = useState('');
-  const [messageList, setMessages] = useState<any>([]);
   const [input, setInput] = useState('');
 
   const userId = useSelector((state: RootState) => state.user.profile.id);
+  const messages = useSelector((state: RootState) => state.chat.messages);
   const chatContent = useRef<null | HTMLDivElement>(null);
+
+  const dispatch = useDispatch();
 
   useEffect(() => {
     getMessages();
+
+    socket.on('message', (payload: any) => {
+      dispatch(setMessage(payload));
+      scrollToChatBottom();
+    });
 
     return () => {
       socket.close();
     };
   }, []);
 
-  useEffect(() => {
-    socket.on('message', (payload: any) => {
-      let previousMessages: Array<any> = [...messageList];
-      previousMessages.push(payload);
-      setMessages(previousMessages);
-      scrollToChatBottom();
-    });
-    scrollToChatBottom();
-  }, [messageList]);
+  // useEffect(() => {
+  //   // socket.on('message', (payload: any) => {
+  //   //   let previousMessages: Array<any> = [...messageList];
+  //   //   previousMessages.push(payload);
+  //   //   setMessages(previousMessages);
+  //   //   scrollToChatBottom();
+  //   // });
+  //   // scrollToChatBottom();
+  // }, [messageList]);
 
   const scrollToChatBottom = () => {
     const element = chatContent.current;
@@ -46,7 +54,7 @@ const ChatRoom: React.FC = _ => {
     const { data } = res;
     const { messages, url } = data;
     setUrl(url);
-    setMessages(messages);
+    dispatch(setMessageList(messages));
   };
 
   const onChange = (e: any) => {
@@ -75,7 +83,7 @@ const ChatRoom: React.FC = _ => {
   return (
     <View
       title={title}
-      messages={messageList}
+      messages={messages}
       onSend={onSend}
       input={input}
       onChange={onChange}
