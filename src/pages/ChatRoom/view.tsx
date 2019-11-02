@@ -13,6 +13,7 @@ const View: React.FC<Props> = ({
   onChange,
   onKeyDown,
   userId,
+  chatContent,
 }) => {
   return (
     <Container style={{
@@ -27,7 +28,7 @@ const View: React.FC<Props> = ({
         <styled.Add></styled.Add>
       </styled.Nav>
 
-      <styled.Content>
+      <styled.Content ref={chatContent}>
         {
           messages.map((m: ChatProps, i: number) => {
             return (

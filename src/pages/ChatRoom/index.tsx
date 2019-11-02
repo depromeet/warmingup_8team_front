@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { useSelector } from 'react-redux';
 import { RootState } from 'store/reducers/interface';
 import io from 'socket.io-client';
@@ -9,10 +9,12 @@ const socket = io('http://localhost:5000');
 
 const ChatRoom: React.FC = _ => {
   const [title, setTitle] = useState('우리집');
+  const [url, setUrl] = useState('');
   const [messageList, setMessages] = useState<any>([]);
   const [input, setInput] = useState('');
 
   const userId = useSelector((state: RootState) => state.user.profile.id);
+  const chatContent = useRef<null | HTMLDivElement>(null);
 
   useEffect(() => {
     getMessages();
@@ -27,20 +29,23 @@ const ChatRoom: React.FC = _ => {
       let previousMessages: Array<any> = [...messageList];
       previousMessages.push(payload);
       setMessages(previousMessages);
+      scrollToChatBottom();
     });
+    scrollToChatBottom();
   }, [messageList]);
 
-  const addMessage = (message: any) => {
-    console.log(messageList);
-    // let previousMessages: Array<any> = [...messages];
-    // previousMessages.push(message);
-    // setMessages(previousMessages);
+  const scrollToChatBottom = () => {
+    const element = chatContent.current;
+    if (element) {
+      element.scrollTop = element.scrollHeight;
+    }
   };
 
   const getMessages = async () => {
     const res = await axios.get('/chatroom');
     const { data } = res;
     const { messages, url } = data;
+    setUrl(url);
     setMessages(messages);
   };
 
@@ -76,6 +81,7 @@ const ChatRoom: React.FC = _ => {
       onChange={onChange}
       onKeyDown={onKeyDown}
       userId={userId}
+      chatContent={chatContent}
     />
   );
 }
