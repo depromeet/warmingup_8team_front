@@ -82,6 +82,7 @@ const ChatRoom: React.FC = _ => {
       onKeyDown={onKeyDown}
       userId={userId}
       chatContent={chatContent}
+      chatKey={url}
     />
   );
 };

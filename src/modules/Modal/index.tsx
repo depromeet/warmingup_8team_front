@@ -1,8 +1,12 @@
 import React from 'react';
 import * as styled from './style';
+import { Props } from './type';
 import {Button, ShareLink} from "../../components";
 
-const Modal:React.FC = _ => {
+const Modal:React.FC<Props> = ({
+  chatKey,
+}) => {
+  const url = window.location.origin;
 
   return (
       <styled.Background>
@@ -16,7 +20,7 @@ const Modal:React.FC = _ => {
           </styled.Text>
 
           <ShareLink
-            link={'http://www.url-kkirookchat.com/{chatUniqueValue}'}
+            link={`${url}/?key=${chatKey}`}
             width={880}
           />
 

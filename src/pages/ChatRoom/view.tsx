@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 import { Container } from 'components';
-import {Chat, Modal} from 'modules';
+import { Chat, Modal } from 'modules';
 import { Props as ChatProps } from 'modules/Chat/interface';
 import { Props } from './interface';
 import * as styled from './style';
@@ -15,6 +15,7 @@ const View: React.FC<Props> = ({
   onKeyDown,
   userId,
   chatContent,
+  chatKey,
 }) => {
   const [modal, setModal] = useState(false);
 
@@ -67,7 +68,11 @@ const View: React.FC<Props> = ({
         <styled.Send onClick={() => onSend()}>입력</styled.Send>
       </styled.InputArea>
       {
-        modal ? <Modal/> : null
+        modal ? (
+          <Modal
+            chatKey={chatKey}
+          />
+        ) : null
       }
       </Container>
   );

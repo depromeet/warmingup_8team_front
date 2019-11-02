@@ -15,10 +15,16 @@ export const Header = styled.div`
 export const HeaderBox = styled.div`
   width: 960px;
   margin: auto;
+  cursor: pointer;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
 `;
 
 export const Logo = styled.img`
   vertical-align: top;
+  cursor: pointer;
 `;
 
 export const HeaderText = styled.span`

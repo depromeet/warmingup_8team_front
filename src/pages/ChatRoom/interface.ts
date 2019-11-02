@@ -7,4 +7,5 @@ export interface Props {
   onKeyDown: Function,
   userId: number | null,
   chatContent: any,
+  chatKey: string,
 };

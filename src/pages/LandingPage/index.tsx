@@ -1,23 +1,37 @@
-import React, { useEffect } from 'react';
-import { useHistory } from "react-router-dom";
+import React, { useState, useEffect } from 'react';
+import { useHistory, useParams } from "react-router-dom";
 import { useSelector, useDispatch } from 'react-redux';
 import { KakaoLogin } from 'components';
 import { axios } from 'utils';
 import * as styled from "./style";
 import { RootState } from 'store/reducers/interface';
-import { login } from 'store/reducers/user';
+import {login } from 'store/reducers/user';
+import qs from 'qs';
 
 const LandingPage: React.FC = _ => {
+  const [key, setKey] = useState(null);
   let history = useHistory();
   const isLoggedIn = useSelector((state: RootState) => state.user.isLoggedIn);
   const dispatch = useDispatch();
 
+  useEffect(() => {
+    const url = window.location.href.split('?');
+    if (url.length > 1) {
+      const queryParams = url[1];
+      const parseKey = qs.parse(queryParams);
+      setKey(parseKey['key']);
+    }
+  }, []);
+
   const loginSuccess = async (result: any) => {
     const { access_token } = result;
     if (access_token) {
-      const res = await axios.post('/login', {
-        access_token,
-      });
+      let payload: any = { access_token };
+      if (key) {
+        payload['url'] = key;
+      }
+
+      const res = await axios.post('/login', payload);
       const { data } = res;
 
       if (data) {
