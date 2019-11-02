@@ -2,8 +2,9 @@ import React from 'react';
 import { Button } from 'components';
 import * as styled from "./style";
 import {useHistory} from "react-router-dom";
+import { Link } from '../../assets';
 
-const LandingPage:React.FC = _ => {
+const CreateChatComplete:React.FC = _ => {
   let history = useHistory();
 
   let chatUniqueValue = '{chatUniqueValue}';
@@ -16,36 +17,38 @@ const LandingPage:React.FC = _ => {
         초대 링크를 공유해보세요!
       </styled.Text>
       <styled.LinkBox>
-        (-) http://www.url-kkirookchat.com/{chatUniqueValue}
+        <styled.Link src={Link} alt={'링크'}/>
+        http://www.url-kkirookchat.com/{chatUniqueValue}
       </styled.LinkBox>
 
       <Button
-        text={'채팅방으로 이동'}
+        text={'채팅 시작하기'}
         bold={true}
-        width={484}
-        height={56}
+        width={470}
+        height={75}
         color={'white'}
-        background={'#4a4a4a'}
+        background={'#5057ef'}
         margin={'77px 0 15px'}
         onClick={() => history.push('/chat')}
+        borderRadius={37.5}
+        fontSize={20}
       />
       <br/>
 
-      <Button
-        text={'일정 등록'}
-        bold={true}
-        width={177}
-        height={56}
-      />
-      <Button
-        text={'질문 등록'}
-        bold={true}
-        width={177}
-        height={56}
-        margin={'0 0 0 77px'}
-      />
+      <styled.Button
+        margin={'0 60px 0 0'}
+      >
+        일정 등록하기
+      </styled.Button>
+
+      <styled.Button
+        onClick={() => history.push('/question')}
+      >
+        질문 등록하기
+      </styled.Button>
+
     </div>
   );
 };
 
-export default LandingPage;
+export default CreateChatComplete;

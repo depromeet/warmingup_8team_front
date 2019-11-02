@@ -1,17 +1,22 @@
-import React from 'react';
+import React, {useState} from 'react';
 import { Container } from 'components';
-import { Chat } from 'modules';
+import {Chat, Modal} from 'modules';
 import { Props as ChatProps } from 'modules/Chat/interface';
 import { Props } from './interface';
 import * as styled from './style';
+import { Add } from 'assets';
 
 const View: React.FC<Props> = ({
   title,
   messages,
   onSend,
   input,
-  setInput,
+  onChange,
+  onKeyDown,
+  userId,
 }) => {
+  const [modal, setModal] = useState(true);
+
   return (
     <Container style={{
       height: '100vh',
@@ -22,7 +27,12 @@ const View: React.FC<Props> = ({
           <styled.Title>{title}</styled.Title>
         </styled.TitleWrapper>
 
-        <styled.Add></styled.Add>
+        <styled.Add
+          src={Add}
+          alt={'멤버 추가 버튼'}
+          onClick={() => setModal(true)}
+        >
+        </styled.Add>
       </styled.Nav>
 
       <styled.Content>
@@ -30,11 +40,12 @@ const View: React.FC<Props> = ({
           messages.map((m: ChatProps, i: number) => {
             return (
               <Chat
-                username={m.username}
-                message={m.message}
-                sender={m.sender}
-                image={m.image}
-                timestamp={m.timestamp}
+                key={m.id}
+                sender={m.user_id === userId}
+                name={m.name}
+                text={m.text}
+                thumbnail_url={m.thumbnail_url}
+                created_at={m.created_at}
               />
             );
           })
@@ -48,12 +59,16 @@ const View: React.FC<Props> = ({
 
         <styled.Input
           value={input}
-          onChange={(e) => setInput(e.target.value)}
+          onChange={(e) => onChange(e)}
+          onKeyDown={(e) => onKeyDown(e)}
         />
 
         <styled.Send onClick={() => onSend()}>입력</styled.Send>
       </styled.InputArea>
-    </Container>
+      {
+        modal ? <Modal/> : null
+      }
+      </Container>
   );
 };
 

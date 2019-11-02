@@ -5,6 +5,7 @@ import CreateChatComplete from './CreateChatComplete';
 import Chat from './Chat';
 import ChatList from './ChatList';
 import ChatRoom from './ChatRoom';
+import Question from './Question';
 
 export {
   LandingPage,
@@ -14,4 +15,5 @@ export {
   Chat,
   ChatList,
   ChatRoom,
+  Question,
 }
