@@ -4,7 +4,6 @@ import * as styled from "./style";
 import {useHistory} from "react-router-dom";
 import { RootState } from 'store/reducers/interface';
 import { useSelector } from 'react-redux';
-import { Link } from '../../assets';
 
 const CreateChatComplete: React.FC = _ => {
   const chatroom = useSelector((state: RootState) => state.user.chatroom);

@@ -15,7 +15,7 @@ const View: React.FC<Props> = ({
   onKeyDown,
   userId,
 }) => {
-  const [modal, setModal] = useState(true);
+  const [modal, setModal] = useState(false);
 
   return (
     <Container style={{

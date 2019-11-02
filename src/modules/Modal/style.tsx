@@ -15,7 +15,7 @@ export const Modal = styled.div`
   height: 456px;
   border-radius: 10px;
   margin: 15% auto;
-  padding: 20px;
+  padding: 20px 40px;
   width: 50%;
   background: white;
 `;
@@ -25,7 +25,7 @@ export const Close = styled.span`
   float: right;
   font-size: 28px;
   font-weight: bold;
-  margin-top: -8px;
+  margin: -8px -15px 0 0;
 
   &:hover {
     color: black;
@@ -44,6 +44,6 @@ export const H1 = styled.div`
 
 export const Text = styled.div`
   font-size: 14px;
-  margin-top: 8px;
+  margin: 8px 0 30px 0;
   text-align: left;
 `;

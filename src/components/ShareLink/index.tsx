@@ -4,8 +4,7 @@ import {Link} from "../../assets";
 import {Props} from "./interface";
 
 const ShareLink: React.FC<Props> = ({
-  link,
-  width
+  link
 }) => {
   return (
     <styled.LinkBox>
