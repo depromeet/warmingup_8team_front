@@ -1,13 +1,11 @@
 import React from 'react';
-import { Button } from 'components';
+import {Button, ShareLink} from 'components';
 import * as styled from "./style";
 import {useHistory} from "react-router-dom";
-import { Link } from '../../assets';
 
 const CreateChatComplete:React.FC = _ => {
   let history = useHistory();
 
-  let chatUniqueValue = '{chatUniqueValue}';
   return (
     <div>
       <styled.Title>
@@ -16,10 +14,10 @@ const CreateChatComplete:React.FC = _ => {
       <styled.Text>
         초대 링크를 공유해보세요!
       </styled.Text>
-      <styled.LinkBox>
-        <styled.Link src={Link} alt={'링크'}/>
-        http://www.url-kkirookchat.com/{chatUniqueValue}
-      </styled.LinkBox>
+      <ShareLink
+        link={'http://www.url-kkirookchat.com/{chatUniqueValue}'}
+        width={640}
+      />
 
       <Button
         text={'채팅 시작하기'}

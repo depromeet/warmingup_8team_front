@@ -5,6 +5,7 @@ import KakaoLogin from './KakaoLogin';
 import Message from './Message';
 import ImageMessage from './ImageMessage';
 import Avatar from './Avatar';
+import ShareLink from './ShareLink';
 
 export {
   Container,
@@ -14,4 +15,5 @@ export {
   Message,
   ImageMessage,
   Avatar,
+  ShareLink,
 };
