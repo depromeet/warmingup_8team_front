@@ -5,6 +5,7 @@ export const CreateChat = styled.div`
   margin: auto;
   width: 924px;
 `;
+
 export const H1 = styled.div`
   font-size: 24px;
   font-weight: bold;
