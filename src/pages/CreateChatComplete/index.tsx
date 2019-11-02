@@ -2,10 +2,14 @@ import React from 'react';
 import {Button, ShareLink} from 'components';
 import * as styled from "./style";
 import {useHistory} from "react-router-dom";
+import { RootState } from 'store/reducers/interface';
+import { useSelector } from 'react-redux';
+import { Link } from '../../assets';
 
-const CreateChatComplete:React.FC = _ => {
+const CreateChatComplete: React.FC = _ => {
+  const chatroom = useSelector((state: RootState) => state.user.chatroom);
+
   let history = useHistory();
-
   return (
     <div>
       <styled.Title>
@@ -15,7 +19,7 @@ const CreateChatComplete:React.FC = _ => {
         초대 링크를 공유해보세요!
       </styled.Text>
       <ShareLink
-        link={'http://www.url-kkirookchat.com/{chatUniqueValue}'}
+        link={`http://www.url-kkirookchat.com/${chatroom.url}`}
         width={640}
       />
 
@@ -31,7 +35,7 @@ const CreateChatComplete:React.FC = _ => {
         borderRadius={37.5}
         fontSize={20}
       />
-      <br/>
+      <br />
 
       <styled.Button
         margin={'0 60px 0 0'}
