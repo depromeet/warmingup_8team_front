@@ -2,9 +2,8 @@ import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useHistory } from "react-router-dom";
 import { RootState } from 'store/reducers/interface';
+import { Logo } from 'assets';
 import { logout } from 'store/reducers/user';
-import logo from '../../img/kkirook-logo.svg'
-import defaultProfile from '../../img/profile.svg'
 import * as styled from './style';
 
 const Header: React.FC = () => {
@@ -16,7 +15,7 @@ const Header: React.FC = () => {
   return (
     <styled.Header>
       <styled.HeaderBox>
-      <styled.Logo src={logo} alt={'logo'}/>
+      <styled.Logo src={Logo} alt={'logo'}/>
       <styled.HeaderText>
         KKIROOK CHAT
       </styled.HeaderText>

@@ -2,36 +2,13 @@ import { takeEvery } from 'redux-saga/effects';
 import { axios } from 'utils';
 import { State, UserState, Action } from './interface';
 
-
 const LOGIN_SUCCESS: string = 'user/LOGIN_SUCCESS';
 const LOGIN_FAILURE: string = 'user/LOGIN_FAILURE';
 const LOGOUT: string = 'user/LOGOUT';
 const FETCH_USER: string = 'user/FETCH_USER';
 
-function hasCSRFToken(): boolean {
-  console.log(11, document.cookie);
-  if (!document.cookie) {
-    return false;
-  }
-  const xsrfCookies = document.cookie.split(';')
-    .map(c => c.trim())
-    .filter(c => c.startsWith('csrf='));
-  console.log(22, xsrfCookies, document.cookie);
-  if (xsrfCookies.length === 0) {
-    return false;
-  }
-
-  const token = decodeURIComponent(xsrfCookies[0].split('=')[1]);
-  console.log(33, token);
-  if (token.length === 0) {
-    return false;
-  }
-
-  return true;
-}
-
 const initialState: State = {
-  isLoggedIn: hasCSRFToken(),
+  isLoggedIn: false,
   isLoading: false,
   profile: {
     id: null,
@@ -45,21 +22,19 @@ const initialState: State = {
 
 export const login = (data: UserState) => {
   const { chatroom, ...profile } = data;
-  // localStorage.setItem('profile', JSON.stringify(profile));
   return {
     type: LOGIN_SUCCESS,
     data: profile,
-  }
+  };
 };
 
 export const logout = () => {
-  document.cookie = 'csrf=;';
   return { type: LOGOUT }
 };
 
-async function* fetchUser() {
+export async function* fetchUser() {
   const res = await axios.post('/login');
-  console.log(res);
+  console.log(11, res);
 };
 
 export function* userSaga() {
