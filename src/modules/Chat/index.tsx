@@ -2,43 +2,48 @@ import React from 'react';
 import * as styled from './style';
 import { Props } from './interface';
 import { Message, ImageMessage, Avatar } from 'components';
+import { convertMesssageTime } from 'utils/datetime';
 
 const Chat: React.FC<Props> = ({
   sender = false,
-  message = '',
-  username = '디프만',
-  image = '',
-  timestamp = '11:30am',
+  text,
+  name,
+  thumbnail_url,
+  created_at,
 }) => {
   return (
     <styled.Wrapper sender={sender}>
       {
         !sender ? (
           <styled.AvatarContainer>
-            <Avatar />
+            <Avatar url={thumbnail_url} />
           </styled.AvatarContainer>
         ) : (
-          <styled.Time sender={sender}>{timestamp}</styled.Time>
+          <styled.Time sender={sender}>
+            {convertMesssageTime(created_at)}
+          </styled.Time>
         )
       }
       <styled.MessageContainer sender={sender}>
         <styled.MessageHeader sender={sender}>
           {
             !sender ? (
-              <styled.User>{username}</styled.User>
+              <styled.User>
+                {name}
+              </styled.User>
             ) : null
           }
         </styled.MessageHeader>
         
         {
-          message ? (
+          text ? (
             <Message
-              message={message}
+              message={text}
               sender={sender}
             />
           ) : (
             <ImageMessage
-              url={image}
+              url={''}
               sender={sender}
             />
           )
@@ -48,7 +53,9 @@ const Chat: React.FC<Props> = ({
       
       {
         !sender ? (
-          <styled.Time sender={sender}>{timestamp}</styled.Time>
+          <styled.Time sender={sender}>
+            {convertMesssageTime(created_at)}
+          </styled.Time>
         ) : null
       }
     </styled.Wrapper>

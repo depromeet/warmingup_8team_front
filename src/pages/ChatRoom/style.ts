@@ -65,12 +65,15 @@ export const UploadButton = styled.button`
 `;
 
 export const Input = styled.textarea`
-  height: 58px;
+  height: 28px;
   border-radius: 29px;
   border: solid 0.5px #979797;
   background-color: #ffffff;
   flex: 1;
   resize: none;
+  outline: 0;
+  padding: 15px 20px;
+  font-size: 16px;
 `;
 
 export const Send = styled.button`
@@ -86,6 +89,7 @@ export const Send = styled.button`
   letter-spacing: normal;
   color: #ffffff;
   cursor: pointer;
+  outline: none;
 
   position: absolute;
   right: 14px;

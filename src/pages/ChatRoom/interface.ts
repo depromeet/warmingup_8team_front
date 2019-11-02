@@ -3,5 +3,7 @@ export interface Props {
   messages: Array<any>,
   onSend: Function,
   input: string,
-  setInput: Function,
+  onChange: Function,
+  onKeyDown: Function,
+  userId: number | null,
 };
