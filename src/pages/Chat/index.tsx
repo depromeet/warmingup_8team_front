@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 
 const Chat:React.FC = _ => {
-  const [messages, setMessages] = useState([]);
+  const [messages] = useState([]);
 
   useEffect(() => {
     const socket = new WebSocket('ws://localhost:3000/ws');

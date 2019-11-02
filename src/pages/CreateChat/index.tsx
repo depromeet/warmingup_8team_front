@@ -2,7 +2,6 @@ import React, {useEffect, useState} from 'react';
 import * as styled from "./style";
 import { Button } from 'components';
 import { useHistory } from "react-router-dom";
-import buttonFileUpload from '../../img/button-fileupload.svg';
 
 const CreateChat:React.FC = _ => {
   const [chatName, setChatName] = useState('');

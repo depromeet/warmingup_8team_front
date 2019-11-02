@@ -12,4 +12,5 @@ export const Button = styled.button`
   cursor: ${(props: Style) => props.cursor ? props.cursor : 'pointer'};
   color: ${(props: Style) => props.color};
   background: ${(props: Style) => props.background ? props.background : 'white'};
+  display: inline;
 `;

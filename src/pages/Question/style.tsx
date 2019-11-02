@@ -33,3 +33,16 @@ export const Input = styled.input`
   margin-top: 17px;
   border: solid 0.5px #9b9b9b;
 `;
+
+export const Text2 = styled.div`
+  font-size: 14px;
+  text-align: left
+  color: #757575;
+`;
+
+export const Skip = styled.button`
+  color: #434343;
+  width: 146px;
+  border: none;
+  margin: 58px 26px 0 303px;
+`;
