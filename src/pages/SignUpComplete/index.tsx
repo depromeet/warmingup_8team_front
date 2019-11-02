@@ -1,8 +1,11 @@
 import React from 'react';
 import * as styled from "./style";
 import {Button} from 'components';
+import {useHistory} from "react-router";
 
 const SignUpComplete:React.FC = _ => {
+  let history = useHistory();
+
   return (
     <styled.SignUpComplete>
       <styled.Title>
@@ -20,8 +23,8 @@ const SignUpComplete:React.FC = _ => {
         width={230}
         margin={"0 12px"}
         text={"채팅방 리스트"}
-        path={'/list'}
         color={'#5057ef'}
+        onClick={() => history.push('/list')}
       />
       <Button
         bold={true}
@@ -30,9 +33,9 @@ const SignUpComplete:React.FC = _ => {
         height={62}
         width={230}
         text={"채팅방 만들기"}
-        path={'/create-chat'}
         color={'white'}
         background={'#5057ef'}
+        onClick={() => history.push('/create-chat')}
       />
     </styled.SignUpComplete>
   )

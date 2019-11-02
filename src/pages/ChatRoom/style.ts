@@ -33,11 +33,7 @@ export const Title = styled.h1`
   color: #333333;
 `;
 
-export const Add = styled.button`
-  width: 54px;
-  height: 54px;
-  border-radius: 50%;
-  background-color: #5057ef;
+export const Add = styled.img`
   cursor: pointer;
 `;
 

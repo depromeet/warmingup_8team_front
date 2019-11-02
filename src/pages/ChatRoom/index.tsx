@@ -37,6 +37,6 @@ const ChatRoom: React.FC = _ => {
       setInput={setInput}
     />
   );
-}
+};
 
 export default ChatRoom;

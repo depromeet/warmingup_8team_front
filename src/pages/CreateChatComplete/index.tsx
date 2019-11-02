@@ -2,7 +2,7 @@ import React from 'react';
 import { Button } from 'components';
 import * as styled from "./style";
 import {useHistory} from "react-router-dom";
-import link from "../../img/link.svg";
+import { Link } from '../../assets';
 
 const CreateChatComplete:React.FC = _ => {
   let history = useHistory();
@@ -17,7 +17,7 @@ const CreateChatComplete:React.FC = _ => {
         초대 링크를 공유해보세요!
       </styled.Text>
       <styled.LinkBox>
-        <styled.Link src={link} alt={'링크'}/>
+        <styled.Link src={Link} alt={'링크'}/>
         http://www.url-kkirookchat.com/{chatUniqueValue}
       </styled.LinkBox>
 

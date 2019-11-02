@@ -10,9 +10,7 @@ export interface Props {
   color?: string,
   background?: string,
   cursor?: string,
-  path?: string,
   onClick?: () => void,
-
 }
 
 export interface Style {
