@@ -83,7 +83,6 @@ export default function userReducer(
         }
       });
     case UPDATE_CHATROOM:
-      debugger;
       return Object.assign({}, state, {
         state,
         chatroom: action.data
