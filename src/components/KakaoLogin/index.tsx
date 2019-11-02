@@ -1,16 +1,14 @@
 import React, { useEffect } from 'react';
-import { Props, KakaoResponse } from './interface';
-import { KakaoLoginBtn } from '../../assets';
+import { Props, KakaoResponse } from './type';
+import * as styled from './style';
 
 const KakaoLogin: React.FC<Props> = ({
-  bold = true,
-  borderRadius = 4,
-  fontSize = 16,
-  height = 48,
-  width = 199,
+  borderRadius = 30,
+  fontSize = 18,
+  height = 60,
+  width = 266,
   onSuccess,
   onFailure,
-  children = "카카오톡으로 시작하기",
   kakaoKey = '4755b34fc859498f582ca9aab1facf37',
 }) => {
   useEffect(() => {
@@ -49,11 +47,12 @@ const KakaoLogin: React.FC<Props> = ({
   };
 
   return (
-    <img
-      src={KakaoLoginBtn}
-      alt={'카카오톡으로 시작하기'}
+    <styled.Button
       onClick={() => onLogin()}
-    />
+    >
+      <styled.Icon src={''} />
+      카카오톡으로 시작하기
+    </styled.Button>
   );
 };
 

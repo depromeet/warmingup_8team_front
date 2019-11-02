@@ -9,14 +9,6 @@ export interface Props {
   kakaoKey?: string,
 }
 
-export interface Style {
-  bold?: boolean,
-  borderRadius?: number,
-  fontSize?: number,
-  height?: number,
-  width?: number,
-}
-
 export interface KakaoResponse {
   access_token: string,
   expires_in: number,

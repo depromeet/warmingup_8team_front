@@ -7,7 +7,7 @@ const Routes:React.FC = _ => {
   return (
     <Router>
       <Switch>
-        <Route exact path='/' component={pages.LandingPage} />
+        <Route exact path='/' component={pages.Home} />
         <Route path='/sign-up-complete' component={pages.SignUpComplete} />
         <Route path='/create-chat' component={pages.CreateChat} />
         <Route path='/create-chat-complete' component={pages.CreateChatComplete} />

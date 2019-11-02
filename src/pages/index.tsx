@@ -1,4 +1,4 @@
-import LandingPage from './LandingPage';
+import Home from './Home';
 import SignUpComplete from './SignUpComplete';
 import CreateChat from './CreateChat';
 import CreateChatComplete from './CreateChatComplete';
@@ -8,7 +8,7 @@ import ChatRoom from './ChatRoom';
 import Question from './Question';
 
 export {
-  LandingPage,
+  Home,
   SignUpComplete,
   CreateChat,
   CreateChatComplete,

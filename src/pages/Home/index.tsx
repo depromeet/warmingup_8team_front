@@ -8,7 +8,7 @@ import { RootState } from 'store/reducers/interface';
 import {login } from 'store/reducers/user';
 import qs from 'qs';
 
-const LandingPage: React.FC = _ => {
+const Home: React.FC = _ => {
   const [key, setKey] = useState(null);
   let history = useHistory();
   const isLoggedIn = useSelector((state: RootState) => state.user.isLoggedIn);
@@ -42,14 +42,14 @@ const LandingPage: React.FC = _ => {
   };
 
   return (
-    <styled.LandingPage>
+    <styled.Wrapper>
       <styled.Logo />
       <styled.Title>
         멀리 있는 가족과 가까워질 시간
       </styled.Title>
 
       <styled.Content>
-        이야기할 상대가 부족하거나 힘들거나 우울하거나 우리 끼룩챗
+        이야기할 상대가 부족하거나 힘들거나 우울하거나 우리 끼룩챗<br/>
         아이고 잘한다 멋지다 행복하다 끝내고싶다아
       </styled.Content>
 
@@ -61,8 +61,8 @@ const LandingPage: React.FC = _ => {
           />
         ) : null
       }
-    </styled.LandingPage>
+    </styled.Wrapper>
   );
 };
 
-export default LandingPage;
+export default Home;

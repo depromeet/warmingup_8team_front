@@ -40,21 +40,22 @@ export const HeaderText = styled.span`
 `;
 
 export const Menu = styled.span`
-  float: right;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
 `;
 
 export const MenuItem = styled.span`
   font-size: 16px;
-  cursor: pointer;
   font-weight: normal;
   font-stretch: normal;
   font-style: normal;
   line-height: normal;
   letter-spacing: normal;
-  color: #4a4a4a;
+  color: #000000;
 
   &:not(:last-child) {
-    margin-right: 57px;
+    margin-right: 50px;
   }
 `;
 
@@ -64,5 +65,38 @@ export const Profile = styled.img`
   object-fit: contain;
   border-radius: 50%;
   vertical-align: sub;
-  margin-right: 5px;
+  margin-right: 8px;
+`;
+
+export const User = styled.div`
+  font-size: 16px;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  color: #4a4a4a;
+
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+`;
+
+export const NonUser = styled.div`
+  width: 85px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+
+  font-size: 16px;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  color: #4a4a4a;
+`;
+
+export const DefaultAvatar = styled.img`
+  margin-right: 8px;
 `;

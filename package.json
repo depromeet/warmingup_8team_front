@@ -40,7 +40,7 @@
     "eject": "react-scripts eject",
     "storybook": "start-storybook -p 9001 -c .storybook",
     "deploy-storybook": "storybook-to-ghpages -- --out=.build-storybook",
-    "deploy": "aws s3 sync ./build s3://kkirook --exclude './build/.*' --profile=datepop-web"
+    "deploy": "aws s3 sync ./build s3://kkirook --exclude './build/.*' --profile=kkirook"
   },
   "eslintConfig": {
     "extends": "react-app"

@@ -2,7 +2,7 @@ import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useHistory } from "react-router-dom";
 import { RootState } from 'store/reducers/interface';
-import { Logo } from 'assets';
+import { Logo, Profile } from 'assets';
 import { Link } from 'react-router-dom';
 import { logout } from 'store/reducers/user';
 import * as styled from './style';
@@ -31,23 +31,15 @@ const Header: React.FC = () => {
         </Link>
 
         <styled.Menu>
+          <styled.MenuItem onClick={() => history.push('/list')}>
+            채팅방 리스트
+          </styled.MenuItem>
+          <styled.MenuItem>
+            질문 설정
+          </styled.MenuItem>
           {
             isLoggedIn ? (
-              <styled.MenuItem onClick={() => history.push('/list')}>
-                채팅방 리스트
-              </styled.MenuItem>
-            ) : null
-          }
-          {
-            isLoggedIn ? (
-              <styled.MenuItem>
-                질문 설정
-              </styled.MenuItem>
-            ) : null
-          }
-          {
-            isLoggedIn ? (
-              <styled.MenuItem onClick={() => onLogout()}>
+              <styled.User onClick={() => onLogout()}>
                 {
                   profile.profile_url ? (
                     <styled.Profile src={profile.profile_url} alt={'프로필 이미지'}/>
@@ -55,8 +47,13 @@ const Header: React.FC = () => {
                     : <styled.Profile src={"defaultProfile"} alt={'프로필 이미지'}/>
                 }
                 {profile.name}
-              </styled.MenuItem>
-            ) : null
+              </styled.User>
+            ) : (
+              <styled.NonUser>
+                <styled.DefaultAvatar src={Profile} />
+                로그인
+              </styled.NonUser>
+            )
           }
         </styled.Menu>
       </styled.HeaderBox>
