@@ -8,6 +8,9 @@ import * as styled from './style';
 const View: React.FC<Props> = ({
   title,
   messages,
+  onSend,
+  input,
+  setInput,
 }) => {
   return (
     <Container style={{
@@ -43,9 +46,12 @@ const View: React.FC<Props> = ({
 
         </styled.UploadButton>
 
-        <styled.Input />
+        <styled.Input
+          value={input}
+          onChange={(e) => setInput(e.target.value)}
+        />
 
-        <styled.Send>입력</styled.Send>
+        <styled.Send onClick={() => onSend()}>입력</styled.Send>
       </styled.InputArea>
     </Container>
   );
