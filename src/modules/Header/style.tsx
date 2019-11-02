@@ -48,6 +48,15 @@ export const MenuItem = styled.span`
   color: #4a4a4a;
 
   &:not(:last-child) {
-    margin-right: 24px;
+    margin-right: 57px;
   }
+`;
+
+export const Profile = styled.img`
+  width: 30px;
+  height: 30px;
+  object-fit: contain;
+  border-radius: 50%;
+  vertical-align: sub;
+  margin-right: 5px;
 `;

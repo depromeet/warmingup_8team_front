@@ -4,10 +4,12 @@ import { useHistory } from "react-router-dom";
 import { RootState } from 'store/reducers/interface';
 import { logout } from 'store/reducers/user';
 import logo from '../../img/kkirook-logo.svg'
+import defaultProfile from '../../img/profile.svg'
 import * as styled from './style';
 
 const Header: React.FC = () => {
   const isLoggedIn = useSelector((state: RootState) => state.user.isLoggedIn);
+  const profile = useSelector((state: RootState) => state.user.profile);
   const dispatch = useDispatch();
   const history = useHistory();
 
@@ -37,7 +39,13 @@ const Header: React.FC = () => {
         {
           isLoggedIn ? (
             <styled.MenuItem onClick={() => dispatch(logout())}>
-              로그아웃
+              {
+                profile.profile_url ? (
+                  <styled.Profile src={profile.profile_url} alt={'프로필 이미지'}/>
+                  )
+                  : <styled.Profile src={defaultProfile} alt={'프로필 이미지'}/>
+              }
+              {profile.name}
             </styled.MenuItem>
           ) : null
         }

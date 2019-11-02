@@ -13,7 +13,6 @@ const LandingPage: React.FC = _ => {
   const dispatch = useDispatch();
 
   const loginSuccess = async (result: any) => {
-    // history.push('/sign-up-complete');
     const { access_token } = result;
     if (access_token) {
       const res = await axios.post('/login', {
@@ -23,6 +22,7 @@ const LandingPage: React.FC = _ => {
 
       if (data) {
         dispatch(login(data));
+        history.push('/sign-up-complete');
       }
     }
   };
@@ -31,13 +31,12 @@ const LandingPage: React.FC = _ => {
     <styled.LandingPage>
       <styled.Logo />
       <styled.Title>
-        타이틀 텍스트
+        멀리 있는 가족과 가까워질 시간
       </styled.Title>
 
       <styled.Content>
-        목숨을 인생을 수 영락과 청춘이 옷을 발휘하기 사막이다.<br />
-        불러 청춘은 뛰노는 능히 든 위하여서. 보이는 작고 아니한 청춘 뜨거운지라, 오아이스도 어디 것이다.<br />
-        인간에 때에, 눈에 사막이다. 이 그들은 없으면 말이다.
+        이야기할 상대가 부족하거나 힘들거나 우울하거나 우리 끼룩챗
+        아이고 잘한다 멋지다 행복하다 끝내고싶다아
       </styled.Content>
 
       {

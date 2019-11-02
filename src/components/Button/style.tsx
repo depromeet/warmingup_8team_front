@@ -8,9 +8,8 @@ export const Button = styled.button`
   font-size: ${(props: Style) => props.fontSize ? `${props.fontSize}px` : '16px'};
   font-weight: ${(props: Style) => props.bold ? 'bold' : 400};
   margin: ${(props: Style) => props.margin};
-  border: 0;
+  border: solid 1px #5057ef;
   cursor: ${(props: Style) => props.cursor ? props.cursor : 'pointer'};
-  box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.24);
   color: ${(props: Style) => props.color};
   background: ${(props: Style) => props.background ? props.background : 'white'};
 `;

@@ -1,3 +1,4 @@
 export interface Style {
-  backgroundImage?: string
+  backgroundImage?: string,
+  margin?: number
 }

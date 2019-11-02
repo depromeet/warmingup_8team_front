@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { Props, KakaoResponse } from './interface';
-import * as styled from './style';
 import axios from 'axios';
+import kakaoLoginBtn from '../../img/login-kakao.svg'
 
 const KakaoLogin: React.FC<Props> = ({
   bold = true,
@@ -50,16 +50,11 @@ const KakaoLogin: React.FC<Props> = ({
   };
 
   return (
-    <styled.Button
-      bold={bold}
-      borderRadius={borderRadius}
-      fontSize={fontSize}
-      height={height}
-      width={width}
+    <img
+      src={kakaoLoginBtn}
+      alt={'카카오톡으로 시작하기'}
       onClick={() => onLogin()}
-    >
-      {children}
-    </styled.Button>
+    />
   );
 };
 

@@ -12,6 +12,7 @@ export interface Props {
   cursor?: string,
   path?: string,
   onClick?: () => void,
+
 }
 
 export interface Style {
