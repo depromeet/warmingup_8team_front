@@ -5,12 +5,19 @@ import { RootState } from 'store/reducers/interface';
 import { Logo } from 'assets';
 import { logout } from 'store/reducers/user';
 import * as styled from './style';
+import axios from 'utils/axios';
 
 const Header: React.FC = () => {
   const isLoggedIn = useSelector((state: RootState) => state.user.isLoggedIn);
   const profile = useSelector((state: RootState) => state.user.profile);
   const dispatch = useDispatch();
   const history = useHistory();
+
+  const onLogout = async () => {
+    await axios.post('/logout');
+    dispatch(logout());
+    history.push('/');
+  };
 
   return (
     <styled.Header>
@@ -37,12 +44,12 @@ const Header: React.FC = () => {
         }
         {
           isLoggedIn ? (
-            <styled.MenuItem onClick={() => dispatch(logout())}>
+            <styled.MenuItem onClick={() => onLogout()}>
               {
                 profile.profile_url ? (
                   <styled.Profile src={profile.profile_url} alt={'프로필 이미지'}/>
                   )
-                  : <styled.Profile src={defaultProfile} alt={'프로필 이미지'}/>
+                  : <styled.Profile src={"defaultProfile"} alt={'프로필 이미지'}/>
               }
               {profile.name}
             </styled.MenuItem>
