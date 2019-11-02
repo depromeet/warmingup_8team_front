@@ -1,13 +1,20 @@
-import React, {useEffect, useState} from 'react';
+import React, { useEffect, useState } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 import * as styled from "./style";
 import { Button } from 'components';
 import { useHistory } from "react-router-dom";
 import buttonFileUpload from '../../img/button-fileupload.svg';
+import { RootState } from 'store/reducers/interface';
+import { updateChatroom } from 'store/reducers/user';
+import { axios } from 'utils';
+import FormData from 'form-data'
 
-const CreateChat:React.FC = _ => {
+const CreateChat: React.FC = _ => {
+  const chatroom = useSelector((state: RootState) => state.user.chatroom);
   const [chatName, setChatName] = useState('');
-  const [imgFile, setImgFile] = useState<{file:File,imagePreviewUrl: string | ArrayBuffer | null} | null>(null);
+  const [imgFile, setImgFile] = useState<{ file: File, imagePreviewUrl: string | ArrayBuffer | null } | null>(null);
   const [startBtn, setStartBtn] = useState(false);
+  const dispatch = useDispatch();
   let history = useHistory();
 
   useEffect(() => {
@@ -38,10 +45,19 @@ const CreateChat:React.FC = _ => {
     }
   };
 
-  const fileUpload = () => {
-    // TODO 서버로 새로운 끼룩 챗 정보 보내기
-    // chatName, imgFile, userInfo
-    history.push('/create-chat-complete');
+  const fileUpload = async () => {
+    let form = new FormData();
+    if (imgFile && chatName) {
+      form.append('thumbnail', imgFile.file);
+      form.append('name', chatName);
+    }
+    const res = await axios.post(`/chatroom/${chatroom.url}`, form)
+    const { data } = res;
+
+    if (data) {
+      dispatch(updateChatroom(data));
+      history.push('/create-chat-complete');
+    }
   };
 
   return (
@@ -65,15 +81,15 @@ const CreateChat:React.FC = _ => {
           onChange={e => setChatName(e.currentTarget.value)}
         />
         {
-          chatName.length===0 ?
+          chatName.length === 0 ?
             <styled.Error>
               채팅방 이름을 입력해주세요.
             </styled.Error>
-          : chatName.length > 12 ?
-            <styled.Error>
-              글자 수가 초과되었습니다. 최대 12자까지 가능합니다.
+            : chatName.length > 12 ?
+              <styled.Error>
+                글자 수가 초과되었습니다. 최대 12자까지 가능합니다.
             </styled.Error>
-          : null
+              : null
         }
 
         <div>
@@ -91,36 +107,36 @@ const CreateChat:React.FC = _ => {
               <styled.Image
                 backgroundImage={imgFile.imagePreviewUrl}
               >
-              <styled.FileInput
-                type="file"
-                id="file"
-                onChange={handleChange}
-              />
-              <styled.Upload
-                margin={241}
-                onClick={()=>handleClick()}
-              >
-                직접 업로드하기
+                <styled.FileInput
+                  type="file"
+                  id="file"
+                  onChange={handleChange}
+                />
+                <styled.Upload
+                  margin={241}
+                  onClick={() => handleClick()}
+                >
+                  직접 업로드하기
               </styled.Upload>
-            </styled.Image>
-            : null
-          : <>
+              </styled.Image>
+              : null
+            : <>
               <styled.ImageBox>
-              <styled.ImageBoxText>
-                채팅방에 설정하고 싶은 이미지를<br/>
-                여기에 끌어다 놓아주세요:)
+                <styled.ImageBoxText>
+                  채팅방에 설정하고 싶은 이미지를<br />
+                  여기에 끌어다 놓아주세요:)
               </styled.ImageBoxText>
-              <styled.Or>또는</styled.Or>
+                <styled.Or>또는</styled.Or>
 
-              <styled.FileInput
-                type="file"
-                id="file"
-                onChange={handleChange}
-              />
-              <styled.Upload
-                onClick={()=>handleClick()}
-              >
-                직접 업로드하기
+                <styled.FileInput
+                  type="file"
+                  id="file"
+                  onChange={handleChange}
+                />
+                <styled.Upload
+                  onClick={() => handleClick()}
+                >
+                  직접 업로드하기
               </styled.Upload>
               </styled.ImageBox>
               <styled.Error>
@@ -139,7 +155,7 @@ const CreateChat:React.FC = _ => {
           color={startBtn ? 'white' : '#5057ef'}
           background={startBtn ? '#5057ef' : 'white'}
           cursor={startBtn ? 'pointer' : 'initial'}
-          onClick={()=>fileUpload()}
+          onClick={() => fileUpload()}
           borderRadius={34}
         />
       </styled.CreateChat>
