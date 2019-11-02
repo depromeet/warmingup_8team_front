@@ -14,3 +14,7 @@ export const Button = styled.button`
   background: ${(props: Style) => props.background ? props.background : 'white'};
   display: inline;
 `;
+
+export const Link = styled.a`
+  text-decoration: none;
+`;

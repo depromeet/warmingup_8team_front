@@ -1,7 +1,6 @@
 import React, { useEffect } from 'react';
 import { Props, KakaoResponse } from './interface';
-import axios from 'axios';
-import kakaoLoginBtn from '../../img/login-kakao.svg'
+import { KakaoLoginBtn } from '../../assets';
 
 const KakaoLogin: React.FC<Props> = ({
   bold = true,
@@ -51,7 +50,7 @@ const KakaoLogin: React.FC<Props> = ({
 
   return (
     <img
-      src={kakaoLoginBtn}
+      src={KakaoLoginBtn}
       alt={'카카오톡으로 시작하기'}
       onClick={() => onLogin()}
     />

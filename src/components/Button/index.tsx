@@ -15,29 +15,9 @@ const Button:React.FC<Props> = ({
   color,
   background,
   cursor,
-  path,
   onClick,
 }) => {
   return (
-    path?
-    <Link to={path}>
-      <styled.Button
-        disabled={disabled}
-        bold={bold}
-        borderRadius={borderRadius}
-        fontSize={fontSize}
-        height={height}
-        width={width}
-        margin={margin}
-        color={color}
-        background={background}
-        cursor={cursor}
-        onClick={onClick}
-        >
-        {text}
-      </styled.Button>
-    </Link>
-      :
     <styled.Button
       disabled={disabled}
       bold={bold}

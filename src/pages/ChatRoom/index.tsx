@@ -84,6 +84,6 @@ const ChatRoom: React.FC = _ => {
       chatContent={chatContent}
     />
   );
-}
+};
 
 export default ChatRoom;

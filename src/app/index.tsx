@@ -6,7 +6,7 @@ import axios from 'utils/axios';
 import Routes from 'routes';
 import { login } from 'store/reducers/user';
 
-const App:React.FC = () => {
+const App: React.FC = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {

@@ -1,5 +1,7 @@
+import { ChatroomState } from "../chatroom/interface";
+
 export interface UserState {
-  chatroom?: any,
+  chatroom?: ChatroomState,
   id: number | null,
   email: string | null,
   gender: boolean | null,
@@ -12,6 +14,7 @@ export interface State {
   readonly isLoggedIn: boolean,
   readonly isLoading: boolean,
   readonly profile: UserState,
+  readonly chatroom: ChatroomState
 };
 
 interface loginAction {

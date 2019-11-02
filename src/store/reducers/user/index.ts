@@ -6,6 +6,7 @@ const LOGIN_SUCCESS: string = 'user/LOGIN_SUCCESS';
 const LOGIN_FAILURE: string = 'user/LOGIN_FAILURE';
 const LOGOUT: string = 'user/LOGOUT';
 const FETCH_USER: string = 'user/FETCH_USER';
+const UPDATE_CHATROOM: string = 'chatroom/UPDATE';
 
 const initialState: State = {
   isLoggedIn: false,
@@ -18,14 +19,29 @@ const initialState: State = {
     profile_url: null,
     thumbnail_url: null,
   },
+
+  chatroom: {
+    id: null,
+    name: null,
+    thumbnail: null,
+    url: null
+
+  }
 };
 
 export const login = (data: UserState) => {
   const { chatroom, ...profile } = data;
   return {
     type: LOGIN_SUCCESS,
-    data: profile,
+    data: { chatroom, profile },
   };
+};
+
+export const updateChatroom = (data: any) => {
+  return {
+    type: UPDATE_CHATROOM,
+    data: { chatroom: data }
+  }
 };
 
 export const logout = () => {
@@ -50,7 +66,8 @@ export default function userReducer(
       return Object.assign({}, state, {
         isLoggedIn: true,
         isLoading: false,
-        profile: action.data
+        profile: action.data.profile,
+        chatroom: action.data.chatroom,
       });
     case LOGOUT:
       return Object.assign({}, state, {
@@ -65,6 +82,11 @@ export default function userReducer(
           thumbnail_url: null,
         }
       });
+    case UPDATE_CHATROOM:
+      return Object.assign({}, state, {
+        state,
+        chatroom: action.data
+      })
     default:
       return state;
   }
