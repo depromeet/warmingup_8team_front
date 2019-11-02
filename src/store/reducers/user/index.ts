@@ -8,7 +8,7 @@ const LOGIN_FAILURE: string = 'user/LOGIN_FAILURE';
 const LOGOUT: string = 'user/LOGOUT';
 const FETCH_USER: string = 'user/FETCH_USER';
 
-function hasCSRFToken():boolean {
+function hasCSRFToken(): boolean {
   console.log(11, document.cookie);
   if (!document.cookie) {
     return false;
@@ -66,7 +66,7 @@ export function* userSaga() {
   yield takeEvery(FETCH_USER, fetchUser);
 };
 
-export default function userReducer (
+export default function userReducer(
   state: State = initialState,
   action: Action,
 ): State {
@@ -88,7 +88,8 @@ export default function userReducer (
           name: null,
           profile_url: null,
           thumbnail_url: null,
-      }});
+        }
+      });
     default:
       return state;
   }

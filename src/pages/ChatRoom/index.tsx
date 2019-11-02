@@ -13,9 +13,9 @@ const ChatRoom: React.FC = _ => {
     const s = io('http://localhost:5000');
     setSocket(s);
 
-    s.on('connect', function() {
+    s.on('connect', function () {
       console.log('서버와 연결');
-    }); 
+    });
     getMessages();
   }, []);
 
