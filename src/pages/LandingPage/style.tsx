@@ -12,9 +12,10 @@ export const Logo = styled.div`
 `;
 
 export const Title = styled.div`
-  font-size: 24px;
+  font-size: 36px;
   font-weight: bold;
   margin-top: 24px;
+  color: #5057ef;
 `;
 
 export const Content = styled.div`

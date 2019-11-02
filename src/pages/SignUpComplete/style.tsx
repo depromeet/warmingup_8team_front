@@ -4,13 +4,14 @@ export const SignUpComplete = styled.div`
 `;
 
 export const Title = styled.div`
-  font-size: 24px;
+  font-size: 30px;
   font-weight: bold;
-  margin-top: 357px;
+  margin-top: 350px;
+  color: #5057ef;
 `;
 
 export const Content = styled.div`
-  font-size: 16px;
+  font-size: 18px;
   margin: 24px 0 60px;
 `;
 
