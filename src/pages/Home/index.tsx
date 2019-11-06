@@ -45,14 +45,12 @@ const Home: React.FC = _ => {
     }
   };
 
-  if (user.chatroom.url) {
-    history.replace('/chat');
-    // 이후 아래 if문보다 아래로 가야함
-  }
-
   if (user.questions.length == 0) {
+    history.replace('/sign-up-complete')
     // 질문 등록하는 경로로 보냄
     // return코드 넣어야 함
+  } else {
+    history.replace('/chat')
   }
 
   return (
