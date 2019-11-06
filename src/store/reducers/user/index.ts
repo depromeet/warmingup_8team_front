@@ -117,7 +117,8 @@ export default function userReducer(
         questions: [...state.questions, action.data]
       });
     case DELETE_QUESTION_SAMPLE:
-      const newState = state.question_sample.filter( val => val !== action.data );
+      const newState = state.question_sample.filter( val => val.message !== action.data.question_sample );
+      
       return Object.assign({}, state, {
         state,
         question_sample: newState

@@ -18,9 +18,9 @@ const SignUpComplete: React.FC = _ => {
 
       <Button
         borderRadius={30}
-        fontSize={16}
-        height={62}
-        width={230}
+        fontSize={18}
+        height={51}
+        width={168}
         margin={"0 12px"}
         text={"채팅방 리스트"}
         color={'#5057ef'}
@@ -29,9 +29,9 @@ const SignUpComplete: React.FC = _ => {
       <Button
         bold={true}
         borderRadius={30}
-        fontSize={16}
-        height={62}
-        width={230}
+        fontSize={18}
+        height={51}
+        width={168}
         text={"채팅방 만들기"}
         color={'white'}
         background={'#5057ef'}

@@ -7,22 +7,26 @@ export const Question = styled.div`
 `;
 
 export const H1 = styled.div`
-  font-size: 24px;
-  font-weight: bold;
   margin-top: 75px;
-  text-align: left;
-  color: #5057ef;
-`;
-
-export const Text = styled.div`
-  font-size: 15px;
-  font-weight: normal;
+  font-size: 26px;
+  font-weight: bold;
   font-stretch: normal;
   font-style: normal;
   line-height: normal;
   letter-spacing: normal;
-  color: #333333;
+  text-align: justify;
+  color: #2b2b2b;
+`;
+
+export const Text = styled.div`
   margin-top: 12px;
+  font-size: 15px;
+  font-weight: 300;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  color: #2b2b2b;
   text-align: left;
 `;
 
@@ -34,17 +38,29 @@ export const H2 = styled.div`
   line-height: normal;
   letter-spacing: normal;
   color: #2b2b2b;
-  margin-top: 48px;
   text-align: left;
+  margin-top: 48px;
 `;
 
 export const Input = styled.input`
-  width: 894px;
-  height: 48px;
+  width: calc(100% - 32px);
+  height: 26px;
   border: none;
-  padding-left: 30px;
+  padding: 10px 16px;
   margin-top: 17px;
-  border: solid 0.5px #9b9b9b;
+  border: solid 1px #dedede;
+
+  font-size: 16px;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  color: #2b2b2b;
+
+  &::placeholder {
+    color: #bdbdbd;
+  }
 `;
 
 export const Text2 = styled.div`
@@ -61,9 +77,23 @@ export const Text2 = styled.div`
 `;
 
 export const Skip = styled.button`
-  color: #434343;
-  width: 146px;
+  font-size: 16px;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  text-align: center;
+  color: #757575;
   border: none;
-  margin: 58px 26px 0 303px;
   cursor: pointer;
+  margin-right: 38px;
+`;
+
+export const Bottom = styled.div`
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-end;
+  margin-top: 32px;
 `;

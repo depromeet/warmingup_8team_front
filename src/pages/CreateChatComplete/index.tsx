@@ -12,27 +12,28 @@ const CreateChatComplete: React.FC = _ => {
   return (
     <div>
       <styled.Title>
-        채팅방 생성이 완료되었습니다.
+        채팅방 생성이 완료되었습니다!
       </styled.Title>
       <styled.Text>
-        초대 링크를 공유해보세요!
+        가족, 친적들에게 초대 링크를 공유해보세요!<br/>
+        (아래 박스를 클릭하면 링크가 자동으로 복사됩니다.)
       </styled.Text>
       <ShareLink
-        link={`http://www.url-kkirookchat.com/${chatroom.url}`}
+        link={`${window.location.origin}/${chatroom.url}`}
         width={640}
       />
 
       <Button
         text={'채팅 시작하기'}
         bold={true}
-        width={470}
-        height={75}
+        width={168}
+        height={51}
         color={'white'}
         background={'#5057ef'}
-        margin={'77px 0 15px'}
+        margin={'77px 0 48px'}
         onClick={() => history.push('/chat')}
-        borderRadius={37.5}
-        fontSize={20}
+        borderRadius={30}
+        fontSize={18}
       />
       <br />
 

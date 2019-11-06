@@ -5,6 +5,8 @@ import { useHistory } from "react-router-dom";
 import { Button } from "components";
 import { useSelector } from "react-redux";
 import { RootState } from "../../store/reducers/interface";
+import axios from 'utils/axios';
+import { keyframes } from 'styled-components';
 
 const Question: React.FC = _ => {
   const [question, setQuestion] = useState('');
@@ -13,21 +15,43 @@ const Question: React.FC = _ => {
   const questionSample = useSelector((state: RootState) => state.user.question_sample);
   let history = useHistory();
 
-  // useEffect(() => {
-  //   setQuestion(questionSample[Math.floor(Math.random() * questionSample.length)].message);
-  // },[questionSample]);
+  useEffect(()=> {
+    if (!questionSample) {
+      return history.push('/chat')
+    }
+    const sample = questionSample[Math.floor(Math.random() * questionSample.length)];
+    if (sample) {
+      setQuestion(sample.message);
+    }
+  }, [questionSample]);
 
-  const createQuestion = (question: string, answer: string) => {
+  const createQuestion = async () => {
+    if (!answer) {
+      return alert('답변을 등록해주세요.')
+    }
+
+    const res = await axios.post('/question', {
+      message: question,
+      answer,
+    });
+    const { data } = res;
+    console.log(data);
+
     updateQuestion({
-      id: profile.id,
+      id: question.length,
       message: question,
       answer: answer,
     });
-    deleteQuestionSample({
-      id: profile.id,
-      message: question,
-      answer: answer,
-    });
+    deleteQuestionSample(
+      question
+    );
+    setAnswer('');
+  };
+
+  const onKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
+    if (e.keyCode === 13) {
+      createQuestion();
+    }
   };
 
   return (
@@ -40,36 +64,31 @@ const Question: React.FC = _ => {
       </styled.Text>
 
       <styled.H2>
-        {questionSample[Math.floor(Math.random() * questionSample.length)].message}
+        {question}
       </styled.H2>
       <styled.Input
         value={answer}
         onChange={e => setAnswer(e.currentTarget.value)}
+        onKeyDown={(e) => onKeyDown(e)}
+        placeholder="정답을 입력해주세요"
       />
 
-      <Button
-        text={'+  질문 추가하기'}
-        width={221}
-        height={60}
-        borderRadius={30}
-        color={'#5057ef'}
-        onClick={() => history.push('/custom-question')}
-      />
-
-      <styled.Skip
-        onClick={() => history.push('/chat')}
-      >
-        질문 건너뛰기
-      </styled.Skip>
-      <Button
-        text={'질문 등록'}
-        background={'#5057ef'}
-        color={'white'}
-        width={228}
-        height={60}
-        borderRadius={30}
-        onClick={() => createQuestion(question, answer)}
-      />
+      <styled.Bottom>
+        <styled.Skip
+          onClick={() => history.push('/chat')}
+        >
+          질문 건너뛰기
+        </styled.Skip>
+        <Button
+          text={'질문 등록'}
+          background={'#5057ef'}
+          color={'white'}
+          width={111}
+          height={40}
+          borderRadius={30}
+          onClick={() => createQuestion()}
+        />
+      </styled.Bottom>
 
     </styled.Question>
   );
