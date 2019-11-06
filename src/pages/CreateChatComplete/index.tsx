@@ -19,7 +19,7 @@ const CreateChatComplete: React.FC = _ => {
         (아래 박스를 클릭하면 링크가 자동으로 복사됩니다.)
       </styled.Text>
       <ShareLink
-        link={`http://www.url-kkirookchat.com/${chatroom.url}`}
+        link={`${window.location.origin}/${chatroom.url}`}
         width={640}
       />
 
