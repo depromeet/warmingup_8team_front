@@ -13,21 +13,25 @@ const Question: React.FC = _ => {
   const questionSample = useSelector((state: RootState) => state.user.question_sample);
   let history = useHistory();
 
-  // useEffect(() => {
-  //   setQuestion(questionSample[Math.floor(Math.random() * questionSample.length)].message);
-  // },[questionSample]);
+  useEffect(()=> {
+    if (!questionSample) {
+      return history.push('/chat')
+    }
+    setQuestion(questionSample[Math.floor(Math.random() * questionSample.length)].message)
+  }, [questionSample]);
 
   const createQuestion = (question: string, answer: string) => {
+    // if (!answer) {
+    //   return alert('답변을 등록해주세요.')
+    // }
     updateQuestion({
-      id: profile.id,
+      id: question.length,
       message: question,
       answer: answer,
     });
-    deleteQuestionSample({
-      id: profile.id,
-      message: question,
-      answer: answer,
-    });
+    deleteQuestionSample(
+      question
+    );
   };
 
   return (
@@ -40,7 +44,7 @@ const Question: React.FC = _ => {
       </styled.Text>
 
       <styled.H2>
-        {questionSample[Math.floor(Math.random() * questionSample.length)].message}
+        {question}
       </styled.H2>
       <styled.Input
         value={answer}
