@@ -6,7 +6,7 @@ export const LinkBox = styled.div`
   height: 48px;
   border: solid 1px #dedede;
   background-color: #f9f9f9;
-  width: 580px;
+  width: 610px;
   cursor: pointer;
   position: relative;
 
