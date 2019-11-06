@@ -5,6 +5,7 @@ const KakaoLoginBtn = require('./images/login-kakao.svg');
 const Add = require('./images/member-plus.svg');
 const Profile = require('./images/profile.svg');
 const HomeImage = require('./images/home.png');
+const Kakao = require('./images/kakao.png');
 
 
 export {
@@ -15,4 +16,5 @@ export {
   Add,
   Profile,
   HomeImage,
+  Kakao,
 };
