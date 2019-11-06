@@ -26,17 +26,21 @@ const Home: React.FC = _ => {
     }
   }, []);
 
-  useEffect(async () => {
+  useEffect(() => {
     if (user && key) {
-      let payload: any = {};
-      payload['url'] = key;
-      const res = await axios.post('/login', payload);
-      const { data } = res;
+      const asyncMethod = async () => {
+        let payload: any = {};
+        payload['url'] = key;
+        const res = await axios.post('/login', payload);
+        const { data } = res;
 
-      if (data) {
-        dispatch(login(data));
-        loginAfter(data);
+        if (data) {
+          dispatch(login(data));
+          loginAfter(data);
+        }
       }
+
+      asyncMethod();
     }
   }, [key])
 
