@@ -1,12 +1,12 @@
-import React, {useEffect, useState} from 'react';
+import React, { useEffect, useState } from 'react';
 import * as styled from "./style";
-import {deleteQuestionSample, updateQuestion} from "../../store/reducers/user";
+import { deleteQuestionSample, updateQuestion } from "../../store/reducers/user";
 import { useHistory } from "react-router-dom";
 import { Button } from "components";
-import {useSelector} from "react-redux";
-import {RootState} from "../../store/reducers/interface";
+import { useSelector } from "react-redux";
+import { RootState } from "../../store/reducers/interface";
 
-const Question:React.FC = _ => {
+const Question: React.FC = _ => {
   const [question, setQuestion] = useState('');
   const [answer, setAnswer] = useState('');
   const profile = useSelector((state: RootState) => state.user.profile);

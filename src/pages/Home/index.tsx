@@ -17,8 +17,6 @@ const Home: React.FC = _ => {
   const user = useSelector((state: RootState) => state.user);
   const dispatch = useDispatch();
 
-
-
   useEffect(() => {
     const url = window.location.href.split('?');
     if (url.length > 1) {
@@ -46,6 +44,9 @@ const Home: React.FC = _ => {
     }
   };
 
+  /**
+   * 버그 터질 가능성 있음ㅠㅠ
+   */
   if (user.isLoggedIn) {
     if (!user.chatroom.name) {
       history.replace('/create-chat');
