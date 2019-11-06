@@ -12,7 +12,7 @@ const Input: React.FC<Props> = ({
 }) => {
   const onChangeInput = (e: React.ChangeEvent<HTMLInputElement>) => {
     onChange(e.target.value);
-  }
+  };
 
   return (
     <styled.Wrapper>

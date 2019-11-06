@@ -65,4 +65,5 @@ export const Skip = styled.button`
   width: 146px;
   border: none;
   margin: 58px 26px 0 303px;
+  cursor: pointer;
 `;

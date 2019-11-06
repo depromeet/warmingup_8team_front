@@ -1,11 +1,24 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import * as styled from "./style";
 import {Button} from "../../components";
 import { useHistory } from "react-router-dom";
 
 const Question:React.FC = _ => {
+  const [question, setQuestion] = useState('');
+  const [description, setDescription] = useState('');
   const [answer, setAnswer] = useState('');
   let history = useHistory();
+
+  useEffect(() => {
+    // TODO: 서버에서 질문,설명 받아오기
+    setQuestion('내가 가장 좋아하는 숫자는?');
+    setDescription('(1~99사이에서 선택해 주세요.)');
+  });
+
+  const createQuestion = (question: string, answer: string) => {
+    // TODO 질문, 답변 전송
+    history.push('/chat')
+  };
 
   return (
     <styled.Question>
@@ -16,12 +29,11 @@ const Question:React.FC = _ => {
         가족, 친척들과 함께 이야기할 새로운 채팅방을 만들어보세요!
       </styled.Text>
 
-      {/*TODO: 서버에서 질문 리스트 받아오기*/}
       <styled.H2>
-        내가 가장 좋아하는 숫자는?
+        {question}
       </styled.H2>
       <styled.Text2>
-        (1~99사이에서 선택해 주세요.)
+        {description}
       </styled.Text2>
       <styled.Input
         value={answer}
@@ -34,6 +46,7 @@ const Question:React.FC = _ => {
         height={60}
         borderRadius={30}
         color={'#5057ef'}
+        onClick={() => history.push('/custom-question')}
       />
 
       <styled.Skip
@@ -48,6 +61,7 @@ const Question:React.FC = _ => {
         width={228}
         height={60}
         borderRadius={30}
+        onClick={() => createQuestion(question, answer)}
       />
 
     </styled.Question>

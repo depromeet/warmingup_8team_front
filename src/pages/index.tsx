@@ -5,6 +5,7 @@ import CreateChatComplete from './CreateChatComplete';
 import ChatList from './ChatList';
 import ChatRoom from './ChatRoom';
 import Question from './Question';
+import CustomQuestion from './CustomQuestion';
 
 export {
   Home,
@@ -14,4 +15,5 @@ export {
   ChatList,
   ChatRoom,
   Question,
+  CustomQuestion
 }

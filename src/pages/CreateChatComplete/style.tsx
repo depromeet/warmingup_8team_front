@@ -31,4 +31,5 @@ export const Button = styled.button`
   color: #4a4a4a;
   border: none;
   margin: ${(props: Style) => props.margin ? props.margin : ''};
+  cursor: pointer;
 `;
