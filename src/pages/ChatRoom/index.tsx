@@ -1,13 +1,12 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { RootState } from 'store/reducers/interface';
-import io from 'socket.io-client';
+// import io from 'socket.io-client';
 import axios from 'utils/axios';
 import { setMessage, setMessageList } from 'store/reducers/chat';
 import View from './view';
-
-const env: string = process.env.NODE_ENV || 'development';
-const host = env === 'production' ? 'http://13.209.142.68:5000' : 'http://localhost:5000';
+import { useSocket } from 'utils/socket';
+// const socket = io(host);
 
 const ChatRoom: React.FC = _ => {
   const [title, setTitle] = useState('우리집');
@@ -19,30 +18,21 @@ const ChatRoom: React.FC = _ => {
   const chatContent = useRef<null | HTMLDivElement>(null);
 
   const dispatch = useDispatch();
-  const socket = io(host);
+
+  const socket = useSocket("message", (payload: any) => dispatch(setMessage(payload)));
 
   useEffect(() => {
     getMessages();
 
-    socket.on('message', (payload: any) => {
-      dispatch(setMessage(payload));
-      scrollToChatBottom();
-    });
+    // socket.on('message', (payload: any) => {
+    //   dispatch(setMessage(payload));
+    //   scrollToChatBottom();
+    // });
 
-    return () => {
-      socket.close();
-    };
+    // return () => {
+    //   socket.close();
+    // };
   }, []);
-
-  // useEffect(() => {
-  //   // socket.on('message', (payload: any) => {
-  //   //   let previousMessages: Array<any> = [...messageList];
-  //   //   previousMessages.push(payload);
-  //   //   setMessages(previousMessages);
-  //   //   scrollToChatBottom();
-  //   // });
-  //   // scrollToChatBottom();
-  // }, [messageList]);
 
   const scrollToChatBottom = () => {
     const element = chatContent.current;
@@ -77,8 +67,8 @@ const ChatRoom: React.FC = _ => {
 
   const onSend = () => {
     if (input.length > 0) {
-      const s = socket;
-      s.emit('message', { message: input });
+      // const s = socket;
+      socket.emit('message', { message: input });
     }
   };
 

@@ -1,20 +1,21 @@
 import styled from "styled-components";
 
 export const Header = styled.div`
+  position: absolute;
   width: 100%;
-  height: 64px;
+  height: 70px;
   box-shadow: 0 2px 8px 0 rgba(0, 0, 0, 0.16);
   background-color: #ffffff;
   text-align: left;
   display: flex;
   flex-direction: row;
   align-items: center;
-  justify-content: space-between;
+  justify-content: center;
 `;
 
 export const HeaderBox = styled.div`
   width: 960px;
-  margin: auto;
+  height: 70px;
   cursor: pointer;
   display: flex;
   flex-direction: row;

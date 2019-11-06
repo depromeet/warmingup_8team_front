@@ -1,11 +1,13 @@
 import React from 'react';
 import { BrowserRouter as Router, Switch } from 'react-router-dom';
+import { Header } from 'modules';
 import * as pages from 'pages';
 import Route from './Route';
 
 const Routes:React.FC = _ => {
   return (
     <Router>
+      <Header />
       <Switch>
         <Route exact path='/' component={pages.Home} />
         <Route path='/sign-up-complete' component={pages.SignUpComplete} />
