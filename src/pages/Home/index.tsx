@@ -45,13 +45,16 @@ const Home: React.FC = _ => {
     }
   };
 
-  if (!user.chatroom.name) {
-    history.replace('/create-chat');
-  } else if (user.questions.length == 0) {
-    history.replace('/create-chat-complete')
-  } else {
-    history.replace('/chat')
+  if (user.isLoggedIn) {
+    if (!user.chatroom.name) {
+      history.replace('/create-chat');
+    } else if (user.questions.length == 0) {
+      history.replace('/create-chat-complete')
+    } else {
+      history.replace('/chat')
+    }
   }
+
 
   return (
     <styled.Wrapper>
