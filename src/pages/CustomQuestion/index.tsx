@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React, { useEffect, useState } from 'react';
 import * as styled from "./style";
 import {useHistory} from "react-router";
 import {Button} from "../../components";
@@ -19,7 +19,7 @@ const CustomQuestion:React.FC = _ => {
 
   const createQuestion = (question: string, answer: string) => {
     // TODO 새로운 질문과 답변 등록하기
-    history.push('/chat')
+    history.push('/chat');
   };
 
   return (

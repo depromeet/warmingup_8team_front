@@ -5,9 +5,10 @@ import { KakaoLogin } from 'components';
 import { axios } from 'utils';
 import * as styled from "./style";
 import { RootState } from 'store/reducers/interface';
+import { HomeImage } from 'assets';
 import { login } from 'store/reducers/user';
-import qs from 'qs';
 import { UserState } from 'store/reducers/user/interface';
+import qs from 'qs';
 
 const Home: React.FC = _ => {
   const [key, setKey] = useState(null);
@@ -58,7 +59,7 @@ const Home: React.FC = _ => {
 
   return (
     <styled.Wrapper>
-      <styled.Logo />
+      <styled.Logo src={HomeImage} />
       <styled.Title>
         멀리 있는 가족과 가까워질 시간
       </styled.Title>

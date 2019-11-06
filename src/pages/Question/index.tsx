@@ -1,23 +1,26 @@
-import React, {useEffect, useState} from 'react';
-import * as styled from "./style";
-import {Button} from "../../components";
+import React, { useEffect, useState } from 'react';
 import { useHistory } from "react-router-dom";
+import * as styled from "./style";
+import { Button } from "components";
+import axios from 'utils/axios';
 
 const Question:React.FC = _ => {
-  const [question, setQuestion] = useState('');
-  const [description, setDescription] = useState('');
-  const [answer, setAnswer] = useState('');
+  const [questions, setQuestion] = useState([]); 
+  const [newQuestion, setNewQuestion] = useState('');
   let history = useHistory();
 
   useEffect(() => {
-    // TODO: 서버에서 질문,설명 받아오기
-    setQuestion('내가 가장 좋아하는 숫자는?');
-    setDescription('(1~99사이에서 선택해 주세요.)');
-  });
+    const getQuestion = async () => {
+      const res = await axios.get('/question');
+      const { data } = res;
+      setQuestion(data.questions);
+    };
 
-  const createQuestion = (question: string, answer: string) => {
-    // TODO 질문, 답변 전송
-    history.push('/chat')
+    getQuestion();
+  }, []);
+
+  const createNewQuestion = () => {
+
   };
 
   return (
@@ -29,24 +32,20 @@ const Question:React.FC = _ => {
         가족, 친척들과 함께 이야기할 새로운 채팅방을 만들어보세요!
       </styled.Text>
 
-      <styled.H2>
-        {question}
-      </styled.H2>
-      <styled.Text2>
-        {description}
-      </styled.Text2>
-      <styled.Input
-        value={answer}
-        onChange={e => setAnswer(e.currentTarget.value)}
-      />
+      {
+        questions.map((q: any, i: number) => {
+          return (
+            <React.Fragment>
+              <styled.H2>{q.message}</styled.H2>
+              <styled.Text2>{q.description}</styled.Text2>
+            </React.Fragment>
+          );
+        })
+      }
 
-      <Button
-        text={'+  질문 추가하기'}
-        width={221}
-        height={60}
-        borderRadius={30}
-        color={'#5057ef'}
-        onClick={() => history.push('/custom-question')}
+      <styled.Input
+        value={newQuestion}
+        onChange={e => setNewQuestion(e.currentTarget.value)}
       />
 
       <styled.Skip
@@ -61,7 +60,7 @@ const Question:React.FC = _ => {
         width={228}
         height={60}
         borderRadius={30}
-        onClick={() => createQuestion(question, answer)}
+        onClick={() => createNewQuestion()}
       />
 
     </styled.Question>
