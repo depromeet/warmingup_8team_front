@@ -17,7 +17,10 @@ const Question: React.FC = _ => {
     if (!questionSample) {
       return history.push('/chat')
     }
-    setQuestion(questionSample[Math.floor(Math.random() * questionSample.length)].message)
+    const sample = questionSample[Math.floor(Math.random() * questionSample.length)];
+    if (sample) {
+      setQuestion(sample.message);
+    }
   }, [questionSample]);
 
   const createQuestion = (question: string, answer: string) => {
@@ -49,31 +52,25 @@ const Question: React.FC = _ => {
       <styled.Input
         value={answer}
         onChange={e => setAnswer(e.currentTarget.value)}
+        placeholder="정답을 입력해주세요"
       />
 
-      <Button
-        text={'+  질문 추가하기'}
-        width={221}
-        height={60}
-        borderRadius={30}
-        color={'#5057ef'}
-        onClick={() => history.push('/custom-question')}
-      />
-
-      <styled.Skip
-        onClick={() => history.push('/chat')}
-      >
-        질문 건너뛰기
-      </styled.Skip>
-      <Button
-        text={'질문 등록'}
-        background={'#5057ef'}
-        color={'white'}
-        width={228}
-        height={60}
-        borderRadius={30}
-        onClick={() => createQuestion(question, answer)}
-      />
+      <styled.Bottom>
+        <styled.Skip
+          onClick={() => history.push('/chat')}
+        >
+          질문 건너뛰기
+        </styled.Skip>
+        <Button
+          text={'질문 등록'}
+          background={'#5057ef'}
+          color={'white'}
+          width={111}
+          height={40}
+          borderRadius={30}
+          onClick={() => createQuestion(question, answer)}
+        />
+      </styled.Bottom>
 
     </styled.Question>
   );
