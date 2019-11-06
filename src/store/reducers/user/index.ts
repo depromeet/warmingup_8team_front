@@ -28,19 +28,9 @@ const initialState: State = {
   },
 
   question_sample: [
-    {
-      id: null,
-      message: null,
-      answer: null
-    }
   ],
 
   questions: [
-    {
-      id: null,
-      message: null,
-      answer: null
-    }
   ]
 };
 
@@ -84,7 +74,7 @@ export default function userReducer(
         profile: action.data.profile,
         chatroom: action.data.chatroom,
         question_sample: action.data.question_sample,
-        questions: action.data.questions,
+        questions: action.data.questions || [],
       });
     case LOGOUT:
       return Object.assign({}, state, {

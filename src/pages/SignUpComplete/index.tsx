@@ -1,9 +1,9 @@
 import React from 'react';
 import * as styled from "./style";
-import {Button} from 'components';
-import {useHistory} from "react-router";
+import { Button } from 'components';
+import { useHistory } from "react-router";
 
-const SignUpComplete:React.FC = _ => {
+const SignUpComplete: React.FC = _ => {
   let history = useHistory();
 
   return (
@@ -12,7 +12,7 @@ const SignUpComplete:React.FC = _ => {
         가입을 환영합니다!
       </styled.Title>
       <styled.Content>
-        지금 바로 KKIROOK CHAT 채팅방을 만들어<br/>
+        지금 바로 KKIROOK CHAT 채팅방을 만들어<br />
         가족들과 대화해 보세요!
       </styled.Content>
 
