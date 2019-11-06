@@ -7,7 +7,7 @@ import * as styled from "./style";
 import { RootState } from 'store/reducers/interface';
 import { HomeImage } from 'assets';
 import { login } from 'store/reducers/user';
-import { UserState } from 'store/reducers/user/interface';
+import { UserState, State } from 'store/reducers/user/interface';
 import qs from 'qs';
 
 const Home: React.FC = _ => {
@@ -39,15 +39,16 @@ const Home: React.FC = _ => {
 
       if (data) {
         dispatch(login(data));
-        history.replace('/sign-up-complete');
+        loginAfter(data);
+        // history.replace('/sign-up-complete');
       }
     }
   };
 
-  /**
-   * 버그 터질 가능성 있음ㅠㅠ
-   */
-  if (user.isLoggedIn) {
+  const loginAfter = (user: State) => {
+    /**
+     * 버그 터질 가능성 있음ㅠㅠ
+     */
     if (!user.chatroom.name) {
       history.replace('/create-chat');
     } else if (user.questions.length == 0) {
@@ -56,6 +57,12 @@ const Home: React.FC = _ => {
       history.replace('/chat')
     }
   }
+
+  if (user.isLoggedIn) {
+    loginAfter(user);
+  }
+
+
 
 
   return (
