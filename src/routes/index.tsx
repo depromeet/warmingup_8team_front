@@ -14,6 +14,7 @@ const Routes:React.FC = _ => {
         <Route path='/list' component={pages.ChatList} />
         <Route path='/chat' component={pages.ChatRoom} />
         <Route path='/question' component={pages.Question} />
+        <Route path='/custom-question' component={pages.CustomQuestion} />
       </Switch>
     </Router>
   );

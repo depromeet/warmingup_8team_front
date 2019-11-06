@@ -70,7 +70,7 @@ const ChatRoom: React.FC = _ => {
       e.preventDefault();
     }
 
-    if (e.keyCode == 13 && e.shiftKey) {
+    if (e.keyCode === 13 && e.shiftKey) {
       setInput(`${input}\n`);
     }
   };

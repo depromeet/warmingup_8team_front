@@ -62,7 +62,6 @@ export const MenuItem = styled.span`
 export const Profile = styled.img`
   width: 30px;
   height: 30px;
-  object-fit: contain;
   border-radius: 50%;
   vertical-align: sub;
   margin-right: 8px;

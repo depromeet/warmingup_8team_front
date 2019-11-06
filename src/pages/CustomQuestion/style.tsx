@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const Question = styled.div`
+export const Wrapper = styled.div`
   margin: auto;
   width: 924px;
 `;
@@ -38,12 +38,4 @@ export const Text2 = styled.div`
   font-size: 14px;
   text-align: left
   color: #757575;
-`;
-
-export const Skip = styled.button`
-  color: #434343;
-  width: 146px;
-  border: none;
-  margin: 58px 26px 0 303px;
-  cursor: pointer;
 `;
