@@ -1,26 +1,33 @@
-import React, { useEffect, useState } from 'react';
-import { useHistory } from "react-router-dom";
+import React, {useEffect, useState} from 'react';
 import * as styled from "./style";
+import {deleteQuestionSample, updateQuestion} from "../../store/reducers/user";
+import { useHistory } from "react-router-dom";
 import { Button } from "components";
-import axios from 'utils/axios';
+import {useSelector} from "react-redux";
+import {RootState} from "../../store/reducers/interface";
 
 const Question:React.FC = _ => {
-  const [questions, setQuestion] = useState([]); 
-  const [newQuestion, setNewQuestion] = useState('');
+  const [question, setQuestion] = useState('');
+  const [answer, setAnswer] = useState('');
+  const profile = useSelector((state: RootState) => state.user.profile);
+  const questionSample = useSelector((state: RootState) => state.user.question_sample);
   let history = useHistory();
 
-  useEffect(() => {
-    const getQuestion = async () => {
-      const res = await axios.get('/question');
-      const { data } = res;
-      setQuestion(data.questions);
-    };
+  // useEffect(() => {
+  //   setQuestion(questionSample[Math.floor(Math.random() * questionSample.length)].message);
+  // },[questionSample]);
 
-    getQuestion();
-  }, []);
-
-  const createNewQuestion = () => {
-
+  const createQuestion = (question: string, answer: string) => {
+    updateQuestion({
+      id: profile.id,
+      message: question,
+      answer: answer,
+    });
+    deleteQuestionSample({
+      id: profile.id,
+      message: question,
+      answer: answer,
+    });
   };
 
   return (
@@ -32,20 +39,21 @@ const Question:React.FC = _ => {
         가족, 친척들과 함께 이야기할 새로운 채팅방을 만들어보세요!
       </styled.Text>
 
-      {
-        questions.map((q: any, i: number) => {
-          return (
-            <React.Fragment>
-              <styled.H2>{q.message}</styled.H2>
-              <styled.Text2>{q.description}</styled.Text2>
-            </React.Fragment>
-          );
-        })
-      }
-
+      <styled.H2>
+        {questionSample[Math.floor(Math.random() * questionSample.length)].message}
+      </styled.H2>
       <styled.Input
-        value={newQuestion}
-        onChange={e => setNewQuestion(e.currentTarget.value)}
+        value={answer}
+        onChange={e => setAnswer(e.currentTarget.value)}
+      />
+
+      <Button
+        text={'+  질문 추가하기'}
+        width={221}
+        height={60}
+        borderRadius={30}
+        color={'#5057ef'}
+        onClick={() => history.push('/custom-question')}
       />
 
       <styled.Skip
@@ -60,7 +68,7 @@ const Question:React.FC = _ => {
         width={228}
         height={60}
         borderRadius={30}
-        onClick={() => createNewQuestion()}
+        onClick={() => createQuestion(question, answer)}
       />
 
     </styled.Question>
