@@ -48,7 +48,7 @@ const Header: React.FC = () => {
               <styled.User onClick={() => onLogout()}>
                 {
                   profile.profile_url ? (
-                    <styled.Profile src={profile.profile_url} alt={'프로필 이미지'}/>
+                      <styled.Profile src={profile.profile_url} alt={'프로필 이미지'}/>
                     )
                     : <styled.Profile src={"defaultProfile"} alt={'프로필 이미지'}/>
                 }
