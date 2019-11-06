@@ -16,6 +16,7 @@ const ChatRoom: React.FC = _ => {
   const userId = useSelector((state: RootState) => state.user.profile.id);
   const messages = useSelector((state: RootState) => state.chat.messages);
   const chatContent = useRef<null | HTMLDivElement>(null);
+  const isLoggedIn = useSelector((state: RootState) => state.user.isLoggedIn);
 
   const dispatch = useDispatch();
 
@@ -28,6 +29,10 @@ const ChatRoom: React.FC = _ => {
     //   dispatch(setMessage(payload));
     //   scrollToChatBottom();
     // });
+
+    if (!isLoggedIn) {
+      socket.close();
+    }
 
     return () => {
       socket.close();
