@@ -31,10 +31,10 @@ const Header: React.FC = () => {
         </Link>
 
         <styled.Menu>
-          <styled.MenuItem onClick={() => history.push('/list')}>
+          <styled.MenuItem onClick={() => history.push('/chat')}>
             채팅방 리스트
           </styled.MenuItem>
-          <styled.MenuItem>
+          <styled.MenuItem onClick={() => history.push('/question')}>
             질문 설정
           </styled.MenuItem>
           {

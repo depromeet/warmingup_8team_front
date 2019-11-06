@@ -13,3 +13,7 @@ html, body {
 a {
   text-decoration: none;
 }
+
+input, button {
+  outline: 0;
+}

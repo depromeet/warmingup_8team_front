@@ -3,6 +3,7 @@ import styled from 'styled-components';
 export const Question = styled.div`
   margin: auto;
   width: 924px;
+  margin-top: 75px;
 `;
 
 export const H1 = styled.div`
@@ -14,13 +15,25 @@ export const H1 = styled.div`
 `;
 
 export const Text = styled.div`
-  font-size: 14px;
-  margin-top: 8px;
+  font-size: 15px;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  color: #333333;
+  margin-top: 12px;
   text-align: left;
 `;
 
 export const H2 = styled.div`
   font-size: 18px;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  color: #2b2b2b;
   margin-top: 48px;
   text-align: left;
 `;
@@ -36,8 +49,15 @@ export const Input = styled.input`
 
 export const Text2 = styled.div`
   font-size: 14px;
-  text-align: left
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: normal;
   color: #757575;
+  text-align: left;
+  margin-top: 5px;
+  margin-bottom: 25px;
 `;
 
 export const Skip = styled.button`

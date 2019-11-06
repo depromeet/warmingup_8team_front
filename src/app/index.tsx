@@ -1,10 +1,13 @@
 import React, { useEffect } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import * as styled from './style';
-import { Header } from 'modules';
 import axios from 'utils/axios';
 import Routes from 'routes';
 import { login } from 'store/reducers/user';
+import { ClientSocket } from "utils/socket";
+
+const env: string = process.env.NODE_ENV || 'development';
+const host = env === 'production' ? 'http://13.209.142.68:5000' : 'http://localhost:5000';
 
 const App: React.FC = () => {
   const dispatch = useDispatch();
@@ -25,8 +28,9 @@ const App: React.FC = () => {
 
   return (
     <styled.Wrapper>
-      <Header />
-      <Routes />
+      <ClientSocket url={host}>
+        <Routes />
+      </ClientSocket>
     </styled.Wrapper>
   );
 };
