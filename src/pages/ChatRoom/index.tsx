@@ -29,9 +29,9 @@ const ChatRoom: React.FC = _ => {
     //   scrollToChatBottom();
     // });
 
-    // return () => {
-    //   socket.close();
-    // };
+    return () => {
+      socket.close();
+    };
   }, []);
 
   const scrollToChatBottom = () => {

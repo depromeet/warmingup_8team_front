@@ -1,4 +1,5 @@
 import React, { useEffect } from 'react';
+import { Kakao } from 'assets';
 import { Props, KakaoResponse } from './type';
 import * as styled from './style';
 
@@ -50,7 +51,7 @@ const KakaoLogin: React.FC<Props> = ({
     <styled.Button
       onClick={() => onLogin()}
     >
-      <styled.Icon src={''} />
+      <styled.Icon src={Kakao} />
       카카오톡으로 시작하기
     </styled.Button>
   );

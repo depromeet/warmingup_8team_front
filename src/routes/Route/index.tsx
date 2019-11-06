@@ -8,7 +8,7 @@ const CutomRoute:React.FC<Props> = ({
   component,
   path,
   exact = false,
-  loginRequired = false,
+  loginRequired = true,
 }) => {
   const isLoggedIn = useSelector((state: RootState) => state.user.isLoggedIn);
   const [valid, setValid] = useState(true);

@@ -6,10 +6,9 @@ export const Wrapper = styled.div`
   align-items: center;
 `;
 
-export const Logo = styled.div`
-  width: 228px;
-  height: 228px;
-  background-color: #d8d8d8;
+export const Logo = styled.img`
+  width: 282px;
+  height: 316px;
   margin: auto;
   margin-top: 150px;
 `;
