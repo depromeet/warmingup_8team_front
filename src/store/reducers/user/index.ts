@@ -92,7 +92,7 @@ export default function userReducer(
     case UPDATE_CHATROOM:
       return Object.assign({}, state, {
         state,
-        chatroom: action.data
+        chatroom: action.data.chatroom
       })
     default:
       return state;

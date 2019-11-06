@@ -28,12 +28,12 @@ export const Title = styled.div`
 
 export const Content = styled.p`
   font-size: 16px;
-  font-weight: normal;
+  font-weight: 300;
   font-stretch: normal;
   font-style: normal;
-  line-height: 1.63;
+  line-height: normal;
   letter-spacing: normal;
   text-align: center;
-  color: #333333;
+  color: #2b2b2b;
   margin-bottom: 90px;
 `;
