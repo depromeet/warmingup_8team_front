@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import * as styled from "./style";
 import { Button } from 'components';
 import { useHistory } from "react-router-dom";
-import buttonFileUpload from '../../img/button-fileupload.svg';
+import { Upload } from '../../assets';
 import { RootState } from 'store/reducers/interface';
 import { updateChatroom } from 'store/reducers/user';
 import { axios } from 'utils';
