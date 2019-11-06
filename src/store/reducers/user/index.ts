@@ -7,6 +7,8 @@ const LOGIN_FAILURE: string = 'user/LOGIN_FAILURE';
 const LOGOUT: string = 'user/LOGOUT';
 const FETCH_USER: string = 'user/FETCH_USER';
 const UPDATE_CHATROOM: string = 'chatroom/UPDATE';
+const UPDATE_QUESTION: string = 'question/UPDATE';
+const DELETE_QUESTION_SAMPLE: string = 'question_sample/UPDATE';
 
 const initialState: State = {
   isLoggedIn: false,
@@ -48,6 +50,21 @@ export const updateChatroom = (data: any) => {
     data: { chatroom: data }
   }
 };
+
+export const updateQuestion = (data: any) => {
+  return {
+    type: UPDATE_QUESTION,
+    data: { questions: data }
+  }
+};
+
+export const deleteQuestionSample = (data: any) => {
+  return {
+    type: DELETE_QUESTION_SAMPLE,
+    data: { question_sample: data }
+  }
+};
+
 
 export const logout = () => {
   return { type: LOGOUT }
@@ -93,7 +110,18 @@ export default function userReducer(
       return Object.assign({}, state, {
         state,
         chatroom: action.data.chatroom
-      })
+      });
+    case UPDATE_QUESTION:
+      return Object.assign({}, state, {
+        state,
+        questions: [...state.questions, action.data]
+      });
+    case DELETE_QUESTION_SAMPLE:
+      const newState = state.question_sample.filter( val => val !== action.data );
+      return Object.assign({}, state, {
+        state,
+        question_sample: newState
+      });
     default:
       return state;
   }
