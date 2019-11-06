@@ -146,17 +146,17 @@ const CreateChat: React.FC = _ => {
         }
 
         <Button
+          text={'끼룩챗 시작하기'}
           disabled={!startBtn}
           bold={true}
           height={68}
           width={236}
           margin={'67px'}
-          text={'끼룩챗 시작하기'}
           color={startBtn ? 'white' : '#5057ef'}
           background={startBtn ? '#5057ef' : 'white'}
           cursor={startBtn ? 'pointer' : 'initial'}
-          onClick={() => fileUpload()}
           borderRadius={34}
+          onClick={() => fileUpload()}
         />
       </styled.CreateChat>
     </div>

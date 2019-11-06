@@ -34,6 +34,13 @@ export const Input = styled.input`
   border: solid 0.5px #9b9b9b;
 `;
 
+export const Error = styled.div`
+  font-size: 14px;
+  color: #d0021b;
+  text-align: left;
+  margin-top: 12px;
+`;
+
 export const Text2 = styled.div`
   font-size: 14px;
   text-align: left

@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import * as styled from "./style";
 import {useHistory} from "react-router";
 import {Button} from "../../components";
@@ -6,11 +6,20 @@ import {Button} from "../../components";
 const CustomQuestion:React.FC = _ => {
   const [question, setQuestion] = useState('');
   const [answer, setAnswer] = useState('');
+  const [startBtn, setStartBtn] = useState(false);
   let history = useHistory();
+
+  useEffect(() => {
+    if (question && answer) {
+      setStartBtn(true);
+      return;
+    }
+    setStartBtn(false);
+  }, [question, answer]);
 
   const createQuestion = (question: string, answer: string) => {
     // TODO 새로운 질문과 답변 등록하기
-    history.push('/custom-question')
+    history.push('/chat')
   };
 
   return (
@@ -32,6 +41,13 @@ const CustomQuestion:React.FC = _ => {
         value={question}
         onChange={e => setQuestion(e.currentTarget.value)}
       />
+      {
+        question.length === 0 ?
+          <styled.Error>
+            질문을 입력해주세요.
+          </styled.Error>
+          : null
+      }
 
       <styled.H2>
         Answer
@@ -43,17 +59,26 @@ const CustomQuestion:React.FC = _ => {
         value={answer}
         onChange={e => setAnswer(e.currentTarget.value)}
       />
+      {
+        answer.length === 0 ?
+          <styled.Error>
+            답변을 입력해주세요.
+          </styled.Error>
+          : null
+      }
 
 
       <Button
         text={'질문 등록'}
-        width={470}
-        height={75}
-        color={'white'}
-        background={'#5057ef'}
-        margin={'77px 0 15px'}
-        borderRadius={37.5}
-        fontSize={20}
+        disabled={!startBtn}
+        bold={true}
+        height={68}
+        width={236}
+        margin={'67px'}
+        color={startBtn ? 'white' : '#5057ef'}
+        background={startBtn ? '#5057ef' : 'white'}
+        cursor={startBtn ? 'pointer' : 'initial'}
+        borderRadius={34}
         onClick={() => createQuestion(question, answer)}
       />
     </styled.Wrapper>
