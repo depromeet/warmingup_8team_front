@@ -26,6 +26,20 @@ const Home: React.FC = _ => {
     }
   }, []);
 
+  useEffect(async () => {
+    if (user && key) {
+      let payload: any = {};
+      payload['url'] = key;
+      const res = await axios.post('/login', payload);
+      const { data } = res;
+
+      if (data) {
+        dispatch(login(data));
+        loginAfter(data);
+      }
+    }
+  }, [key])
+
   const loginSuccess = async (result: any) => {
     const { access_token } = result;
     if (access_token) {
@@ -40,7 +54,6 @@ const Home: React.FC = _ => {
       if (data) {
         dispatch(login(data));
         loginAfter(data);
-        // history.replace('/sign-up-complete');
       }
     }
   };
@@ -61,9 +74,6 @@ const Home: React.FC = _ => {
   if (user.isLoggedIn) {
     loginAfter(user);
   }
-
-
-
 
   return (
     <styled.Wrapper>
