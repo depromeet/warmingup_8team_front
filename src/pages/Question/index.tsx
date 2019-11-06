@@ -5,6 +5,8 @@ import { useHistory } from "react-router-dom";
 import { Button } from "components";
 import { useSelector } from "react-redux";
 import { RootState } from "../../store/reducers/interface";
+import axios from 'utils/axios';
+import { keyframes } from 'styled-components';
 
 const Question: React.FC = _ => {
   const [question, setQuestion] = useState('');
@@ -23,10 +25,18 @@ const Question: React.FC = _ => {
     }
   }, [questionSample]);
 
-  const createQuestion = (question: string, answer: string) => {
-    // if (!answer) {
-    //   return alert('답변을 등록해주세요.')
-    // }
+  const createQuestion = async () => {
+    if (!answer) {
+      return alert('답변을 등록해주세요.')
+    }
+
+    const res = await axios.post('/question', {
+      message: question,
+      answer,
+    });
+    const { data } = res;
+    console.log(data);
+
     updateQuestion({
       id: question.length,
       message: question,
@@ -35,6 +45,13 @@ const Question: React.FC = _ => {
     deleteQuestionSample(
       question
     );
+    setAnswer('');
+  };
+
+  const onKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
+    if (e.keyCode === 13) {
+      createQuestion();
+    }
   };
 
   return (
@@ -52,6 +69,7 @@ const Question: React.FC = _ => {
       <styled.Input
         value={answer}
         onChange={e => setAnswer(e.currentTarget.value)}
+        onKeyDown={(e) => onKeyDown(e)}
         placeholder="정답을 입력해주세요"
       />
 
@@ -68,7 +86,7 @@ const Question: React.FC = _ => {
           width={111}
           height={40}
           borderRadius={30}
-          onClick={() => createQuestion(question, answer)}
+          onClick={() => createQuestion()}
         />
       </styled.Bottom>
 
