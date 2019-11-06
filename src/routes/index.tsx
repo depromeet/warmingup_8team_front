@@ -9,7 +9,7 @@ const Routes:React.FC = _ => {
     <Router>
       <Header />
       <Switch>
-        <Route exact path='/' component={pages.Home} />
+        <Route exact path='/' component={pages.Home} loginRequired={false} />
         <Route path='/sign-up-complete' component={pages.SignUpComplete} />
         <Route path='/create-chat' component={pages.CreateChat} />
         <Route path='/create-chat-complete' component={pages.CreateChatComplete} />
