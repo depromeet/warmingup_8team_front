@@ -11,7 +11,14 @@ export const Title = styled.div`
 `;
 
 export const Content = styled.div`
-  font-size: 18px;
+  font-size: 16px;
+  font-weight: 300;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  text-align: center;
+  color: #2b2b2b;
   margin: 24px 0 60px;
 `;
 
