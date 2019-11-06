@@ -1,7 +1,7 @@
 import React from 'react';
-import {Button, ShareLink} from 'components';
+import { Button, ShareLink } from 'components';
 import * as styled from "./style";
-import {useHistory} from "react-router-dom";
+import { useHistory } from "react-router-dom";
 import { RootState } from 'store/reducers/interface';
 import { useSelector } from 'react-redux';
 
