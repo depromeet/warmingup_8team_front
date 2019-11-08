@@ -16,7 +16,6 @@ export const Button = styled.button`
   justify-content: center;
   outline: 0;
   padding: 12px;
-  margin-bottom: 317px;
   
   &:hover {
     background-color: #ffd518

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useHistory, useParams } from "react-router-dom";
 import { useSelector, useDispatch } from 'react-redux';
-import {Content, KakaoLogin, Title} from 'components';
+import { KakaoLogin } from 'components';
 import { axios } from 'utils';
 import * as styled from "./style";
 import { RootState } from 'store/reducers/interface';
@@ -80,31 +80,37 @@ const Home: React.FC = _ => {
   }
 
   return (
-    <styled.Wrapper>
-      <styled.Logo src={HomeImage} />
-      <Title
-        text={'멀리 있는 가족과 가까워질 시간'}
-        marginTop={12}
+    <>
+      <styled.Top/>
+      <styled.Image
+        src={HomeImage}
+        alt={"배경 이미지"}
       />
 
-      <Content
-        text={
-          '서로의 꿈과 목표를 위해 몸은 잠시 떨어져 있지만,\n' +
-          '마음만은 언제나 함께인 우리 가족.\n' +
-          '끼룩챗으로 서로의 일상과 관심사를 공유해보세요!'
+      <styled.Wrapper>
+        <styled.Title
+        >
+          멀리 있는 가족과<br/>
+          <b>가까워질 시간</b>
+        </styled.Title>
+
+        <styled.Content>
+          서로의 꿈과 목표를 위해 몸은 잠시 떨어져 있지만,<br/>
+          마음만은 언제나 함께인 우리 가족.<br/>
+          <b>끼룩챗으로 서로의 일상과 관심사를 공유해보세요!</b>
+        </styled.Content>
+
+        {
+          !isLoggedIn ? (
+            <KakaoLogin
+              onSuccess={(result) => loginSuccess(result)}
+              onFailure={() => { }}
+            />
+          ) : <styled.Footer/>
         }
-        margin={'12px 0 64px'}
-      />
-
-      {
-        !isLoggedIn ? (
-          <KakaoLogin
-            onSuccess={(result) => loginSuccess(result)}
-            onFailure={() => { }}
-          />
-        ) : null
-      }
-    </styled.Wrapper>
+      </styled.Wrapper>
+      <styled.Bottom/>
+    </>
   );
 };
 

@@ -1,24 +1,45 @@
 import styled from 'styled-components';
 
 export const Wrapper = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+  padding-left: 20%;
+  width: 80%;
 `;
 
-export const Logo = styled.img`
-  width: 282px;
-  height: 316px;
-  margin: auto;
-  margin-top: 237px;
+export const Image = styled.img`
+  width: 100%
+  position: absolute;
+  left: 0;
+  z-index: -1;
+  margin-top: 20%;
+`;
+
+export const Top = styled.div`
+  height: 80%;
+  width: 100%;
+  background-color: #f3f4f6;
+  z-index: -2;
+  position: absolute;
+  top: 0;
 `;
 
 export const Title = styled.div`
   font-size: 32px;
-  font-weight: bold;
-  margin-top: 12px;
-  margin-bottom: 12px;
-  color: #5057ef;
+  text-align: left;
+  margin: 220px 0 12px;
+`;
+
+export const Content = styled.div`
+  text-align: left;
+  margin: 0 0 64px;
+`;
+
+export const Bottom = styled.div`
+  background-color: #b7cff7;
+  height: 30%;
+  width: 100%;
+  position: absolute;
+  bottom: 0;
+  z-index: -3;
 `;
 
 export const Footer = styled.div`
