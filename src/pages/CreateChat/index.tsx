@@ -1,9 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import * as styled from "./style";
-import { Button } from 'components';
+import {Button, Content, Description, Label, Title} from 'components';
 import { useHistory } from "react-router-dom";
-import { Upload } from '../../assets';
 import { RootState } from 'store/reducers/interface';
 import { updateChatroom } from 'store/reducers/user';
 import { axios } from 'utils';
@@ -61,24 +60,31 @@ const CreateChat: React.FC = _ => {
   };
 
   return (
-    <div>
+    <>
       <styled.CreateChat>
-        <styled.H1>
-          새로운 채팅방 생성하기
-        </styled.H1>
-        <styled.Description>
-          가족, 친척들과 함께 이야기할 새로운 채팅방을 만들어보세요!
-        </styled.Description>
+        <Title
+          text={'새로운 끼룩챗 만들기'}
+          color={'#2b2b2b'}
+          marginTop={128}
+          fontSize={26}
+        />
+        <Content
+          text={'가족들과 대화를 나눌 끼룩챗을 만들어보세요.'}
+          margin={'12px 0 48px'}
+          fontSize={15}
+        />
 
-        <styled.H2>
-          채팅방의 이름은 무엇인가요?
-          <styled.Span>
-            ( jpg, png 업로드만 가능합니다. )
-          </styled.Span>
-        </styled.H2>
+        <Label
+          text={'채팅방의 이름은 무엇인가요?'}
+        />
+        <Description
+          text={'(최대 12자까지 가능)'}
+          marginLeft={4}
+        />
         <styled.NameInput
           value={chatName}
           onChange={e => setChatName(e.currentTarget.value)}
+          error={chatName.length === 0}
         />
         {
           chatName.length === 0 ?
@@ -92,14 +98,15 @@ const CreateChat: React.FC = _ => {
               : null
         }
 
-        <div>
-          <styled.H2>
-            채팅방의 대표 사진을 선택해주세요.
-            <styled.Span>
-              ( jpg, png 업로드만 가능합니다. )
-            </styled.Span>
-          </styled.H2>
-        </div>
+        <styled.Wrapper>
+          <Label
+            text={'채팅방의 대표 사진을 선택해주세요.'}
+          />
+          <Description
+            text={'( jpg, png 업로드만 가능합니다. )'}
+            marginLeft={4}
+          />
+        </styled.Wrapper>
 
         {
           imgFile ?
@@ -116,17 +123,19 @@ const CreateChat: React.FC = _ => {
                   margin={241}
                   onClick={() => handleClick()}
                 >
-                  직접 업로드하기
-              </styled.Upload>
+                  이미지 선택하기
+                </styled.Upload>
               </styled.Image>
               : null
             : <>
-              <styled.ImageBox>
-                <styled.ImageBoxText>
-                  채팅방에 설정하고 싶은 이미지를<br />
-                  여기에 끌어다 놓아주세요:)
-              </styled.ImageBoxText>
-                <styled.Or>또는</styled.Or>
+              <styled.ImageBox
+                error={!imgFile}
+              >
+              {/*  <styled.ImageBoxText>*/}
+              {/*    설정하고 싶은 이미지를<br />*/}
+              {/*    여기에 끌어다 놓아주세요.*/}
+              {/*</styled.ImageBoxText>*/}
+              {/*  <styled.Or>- OR -</styled.Or>*/}
 
                 <styled.FileInput
                   type="file"
@@ -134,32 +143,32 @@ const CreateChat: React.FC = _ => {
                   onChange={handleChange}
                 />
                 <styled.Upload
+                  margin={217}
                   onClick={() => handleClick()}
                 >
-                  직접 업로드하기
+                  이미지 선택하기
               </styled.Upload>
               </styled.ImageBox>
               <styled.Error>
-                채팅방 대표 사진을 선택해주세요.
+                사진을 등록해주세요.
               </styled.Error>
             </>
         }
-
-        <Button
-          text={'끼룩챗 시작하기'}
-          disabled={!startBtn}
-          bold={true}
-          height={68}
-          width={236}
-          margin={'67px'}
-          color={startBtn ? 'white' : '#5057ef'}
-          background={startBtn ? '#5057ef' : 'white'}
-          cursor={startBtn ? 'pointer' : 'initial'}
-          borderRadius={34}
-          onClick={() => fileUpload()}
-        />
       </styled.CreateChat>
-    </div>
+      <Button
+        text={'끼룩챗 시작하기'}
+        disabled={!startBtn}
+        bold={true}
+        height={51}
+        width={185}
+        margin={'64px 0 205px'}
+        color={'white'}
+        background={startBtn ? '#5057ef' : '#bdbdbd'}
+        cursor={startBtn ? 'pointer' : 'initial'}
+        borderRadius={30}
+        onClick={() => fileUpload()}
+      />
+    </>
   );
 };
 

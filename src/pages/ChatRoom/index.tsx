@@ -9,10 +9,10 @@ import { useSocket } from 'utils/socket';
 // const socket = io(host);
 
 const ChatRoom: React.FC = _ => {
-  const [title, setTitle] = useState('우리집');
   const [url, setUrl] = useState('');
   const [input, setInput] = useState('');
 
+  const title = useSelector((state: RootState) => state.user.chatroom.name);
   const userId = useSelector((state: RootState) => state.user.profile.id);
   const messages = useSelector((state: RootState) => state.chat.messages);
   const chatContent = useRef<null | HTMLDivElement>(null);

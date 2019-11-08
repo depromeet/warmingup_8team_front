@@ -16,6 +16,8 @@ const Button:React.FC<Props> = ({
   background,
   cursor,
   onClick,
+  hover,
+  active,
 }) => {
   return (
     <styled.Button
@@ -30,6 +32,8 @@ const Button:React.FC<Props> = ({
       background={background}
       cursor={cursor}
       onClick={onClick}
+      hover={hover}
+      active={active}
     >
       {text}
     </styled.Button>

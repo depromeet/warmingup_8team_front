@@ -1,5 +1,5 @@
 export interface Props {
-  title: string,
+  title?: string | undefined | null,
   messages: Array<any>,
   onSend: Function,
   input: string,

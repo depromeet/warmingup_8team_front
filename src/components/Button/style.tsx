@@ -8,13 +8,14 @@ export const Button = styled.button`
   font-size: ${(props: Style) => props.fontSize ? `${props.fontSize}px` : '16px'};
   font-weight: ${(props: Style) => props.bold ? 'bold' : 400};
   margin: ${(props: Style) => props.margin};
-  border: solid 1px #5057ef;
   cursor: ${(props: Style) => props.cursor ? props.cursor : 'pointer'};
   color: ${(props: Style) => props.color};
-  background: ${(props: Style) => props.background ? props.background : 'white'};
+  background: ${(props: Style) => props.background}
   display: inline;
-`;
-
-export const Link = styled.a`
-  text-decoration: none;
+  &:hover {
+    background: ${(props: Style) => props.hover};
+  }
+  &:active {
+    background: ${(props: Style) => props.active};
+  }
 `;

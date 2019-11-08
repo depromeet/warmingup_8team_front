@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useHistory, useParams } from "react-router-dom";
 import { useSelector, useDispatch } from 'react-redux';
-import { KakaoLogin } from 'components';
+import {Content, KakaoLogin, Title} from 'components';
 import { axios } from 'utils';
 import * as styled from "./style";
 import { RootState } from 'store/reducers/interface';
@@ -42,7 +42,7 @@ const Home: React.FC = _ => {
 
       asyncMethod();
     }
-  }, [key])
+  }, [key]);
 
   const loginSuccess = async (result: any) => {
     const { access_token } = result;
@@ -82,15 +82,19 @@ const Home: React.FC = _ => {
   return (
     <styled.Wrapper>
       <styled.Logo src={HomeImage} />
-      <styled.Title>
-        멀리 있는 가족과 가까워질 시간
-      </styled.Title>
+      <Title
+        text={'멀리 있는 가족과 가까워질 시간'}
+        marginTop={12}
+      />
 
-      <styled.Content>
-        서로의 꿈과 목표를 위해 몸은 잠시 떨어져 있지만,<br />
-        마음만은 언제나 함께인 우리 가족.<br />
-        끼룩챗으로 서로의 일상과 관심사를 공유해보세요!
-      </styled.Content>
+      <Content
+        text={
+          '서로의 꿈과 목표를 위해 몸은 잠시 떨어져 있지만,\n' +
+          '마음만은 언제나 함께인 우리 가족.\n' +
+          '끼룩챗으로 서로의 일상과 관심사를 공유해보세요!'
+        }
+        margin={'12px 0 64px'}
+      />
 
       {
         !isLoggedIn ? (

@@ -11,6 +11,8 @@ export interface Props {
   background?: string,
   cursor?: string,
   onClick?: () => void,
+  hover?: string,
+  active?: string,
 }
 
 export interface Style {
@@ -23,4 +25,6 @@ export interface Style {
   color?: string,
   background?: string,
   cursor?: string,
+  hover?: string,
+  active?: string,
 }

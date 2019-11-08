@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Switch } from 'react-router-dom';
 import { Header } from 'modules';
 import * as pages from 'pages';
 import Route from './Route';
+import Footer from "../modules/Footer";
 
 const Routes:React.FC = _ => {
   return (
@@ -18,6 +19,7 @@ const Routes:React.FC = _ => {
         <Route path='/question' component={pages.Question} />
         <Route path='/custom-question' component={pages.CustomQuestion} />
       </Switch>
+      <Footer />
     </Router>
   );
 };

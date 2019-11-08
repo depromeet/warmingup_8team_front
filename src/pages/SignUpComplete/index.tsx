@@ -1,6 +1,6 @@
 import React from 'react';
 import * as styled from "./style";
-import { Button } from 'components';
+import {Button, Content, Title} from 'components';
 import { useHistory } from "react-router";
 
 const SignUpComplete: React.FC = _ => {
@@ -8,23 +8,27 @@ const SignUpComplete: React.FC = _ => {
 
   return (
     <styled.SignUpComplete>
-      <styled.Title>
-        가입을 환영합니다!
-      </styled.Title>
-      <styled.Content>
-        지금 바로 KKIROOK CHAT 채팅방을 만들어<br />
-        가족들과 대화해 보세요!
-      </styled.Content>
+      <Title
+        text={'가입을 환영합니다!'}
+        marginTop={429}
+      />
+      <Content
+        text={
+          '지금 바로 끼룩챗 채팅방을 만들어,\n' +
+          '가족들과 대화해보세요.'
+        }
+        margin={'12px 0 64px'}
+      />
 
       <Button
         borderRadius={30}
         fontSize={18}
         height={51}
         width={168}
-        margin={"0 12px"}
+        margin={"0 12px 365px"}
         text={"채팅방 리스트"}
         color={'#5057ef'}
-        onClick={() => history.push('/list')}
+        onClick={() => history.push('/chat')}
       />
       <Button
         bold={true}
@@ -36,6 +40,8 @@ const SignUpComplete: React.FC = _ => {
         color={'white'}
         background={'#5057ef'}
         onClick={() => history.push('/create-chat')}
+        hover={'#3a40d4'}
+        active={'#2e33ad'}
       />
     </styled.SignUpComplete>
   )

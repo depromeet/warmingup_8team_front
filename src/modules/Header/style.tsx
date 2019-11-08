@@ -3,7 +3,7 @@ import styled from "styled-components";
 export const Header = styled.div`
   position: absolute;
   width: 100%;
-  height: 70px;
+  height: 64px;
   box-shadow: 0 2px 8px 0 rgba(0, 0, 0, 0.16);
   background-color: #ffffff;
   text-align: left;
