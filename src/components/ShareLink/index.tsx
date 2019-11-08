@@ -4,7 +4,8 @@ import {Link} from "../../assets";
 import {Props} from "./interface";
 
 const ShareLink: React.FC<Props> = ({
-  link
+  link,
+  width
 }) => {
   const [copied, setCopied] = useState(false);
 
@@ -30,7 +31,9 @@ const ShareLink: React.FC<Props> = ({
 
   return (
     <>
-    <styled.LinkBox onClick={() => copy(link)}>
+    <styled.LinkBox
+      width={width}
+      onClick={() => copy(link)}>
       <styled.Link src={Link} alt={'링크'}/>
       <span id={'link'}>
         {link}

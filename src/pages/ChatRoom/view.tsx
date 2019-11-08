@@ -1,10 +1,13 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import { Container } from 'components';
 import { Chat, Modal } from 'modules';
 import { Props as ChatProps } from 'modules/Chat/interface';
 import { Props } from './interface';
 import * as styled from './style';
-import { Add } from 'assets';
+import { MemberPlus ,Add } from 'assets';
+import {useHistory} from "react-router";
+import useModal from "../../utils/useModal";
+
 
 const View: React.FC<Props> = ({
   title,
@@ -18,6 +21,13 @@ const View: React.FC<Props> = ({
   chatKey,
 }) => {
   const [modal, setModal] = useState(false);
+  const history = useHistory();
+  const {isShowing, toggle} = useModal();
+
+  // const modalOpen = () => {
+  //   setModal(true);
+  //   console.log('open')
+  // };
 
   return (
     <Container style={{
@@ -25,14 +35,18 @@ const View: React.FC<Props> = ({
     }}>
       <styled.Nav>
         <styled.TitleWrapper>
-          <styled.TitleDot />
+          <styled.TitleDot
+            src={Add}
+            alt={'멤버 추가 버튼'}
+            onClick={() => history.goBack()}
+          />
           <styled.Title>{title}</styled.Title>
         </styled.TitleWrapper>
 
         <styled.Add
-          src={Add}
+          src={MemberPlus}
           alt={'멤버 추가 버튼'}
-          onClick={() => setModal(true)}
+          onClick={toggle}
         >
         </styled.Add>
       </styled.Nav>
@@ -68,9 +82,11 @@ const View: React.FC<Props> = ({
         <styled.Send onClick={() => onSend()}>입력</styled.Send>
       </styled.InputArea>
       {
-        modal ? (
+        isShowing ? (
           <Modal
             chatKey={chatKey}
+            isShowing={isShowing}
+            hide={toggle}
           />
         ) : null
       }

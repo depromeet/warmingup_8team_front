@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="29" height="29" viewBox="0 0 29 29">
+    <g fill="none" fill-rule="evenodd">
+        <path d="M-5-5h38v38H-5z"/>
+        <path fill="#BABABA" fill-rule="nonzero" d="M29 25.778V3.222A3.232 3.232 0 0 0 25.778 0H3.222A3.232 3.232 0 0 0 0 3.222v22.556A3.232 3.232 0 0 0 3.222 29h22.556A3.232 3.232 0 0 0 29 25.778zM8.861 16.917l4.028 4.85 5.639-7.267 7.25 9.667H3.222l5.64-7.25z"/>
+    </g>
+</svg>

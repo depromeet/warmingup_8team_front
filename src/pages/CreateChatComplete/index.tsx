@@ -20,7 +20,7 @@ const CreateChatComplete: React.FC = _ => {
       </styled.Text>
       <ShareLink
         link={`${window.location.origin}/?key=${chatroom.url}`}
-        width={640}
+        width={610}
       />
 
       <Button

@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 
+
 export const Nav = styled.div`
   display: flex;
   flex-direction: row;
@@ -15,12 +16,9 @@ export const TitleWrapper = styled.div`
   align-items: center;
 `;
 
-export const TitleDot = styled.div`
-  width: 24px;
-  height: 24px;
-  background-color: #a0a0a0;
-  border-radius: 50%;
-  margin-right: 8px;
+export const TitleDot = styled.img`
+  margin-right: 24px;
+  cursor: pointer;
 `;
 
 export const Title = styled.h1`

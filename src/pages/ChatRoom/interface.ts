@@ -8,4 +8,4 @@ export interface Props {
   userId: number | null,
   chatContent: any,
   chatKey: string,
-};
+}

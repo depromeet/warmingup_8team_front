@@ -38,4 +38,9 @@ export const Button = styled.button`
     border-radius: 24px;
     box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.16);
   }
+  
+  &:active {
+    border-radius: 24px;
+    box-shadow: 0 0 6px 0 rgba(0, 0, 0, 0.24);
+  }
 `;

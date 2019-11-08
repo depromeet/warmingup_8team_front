@@ -6,16 +6,14 @@ export const LinkBox = styled.div`
   height: 48px;
   border: solid 1px #dedede;
   background-color: #f9f9f9;
-  width: 610px;
+  width: ${(props: StyleProps) => `${props.width}px`};
   cursor: pointer;
   position: relative;
-
   display: flex;
   flex-direction: row;
   align-items: center;
   padding-left: 50px;
-
-
+  
   span {
     font-size: 16px;
     font-weight: normal;
@@ -29,6 +27,9 @@ export const LinkBox = styled.div`
   &:hover {
     text-decoration: underline;
   }
+  &:active {
+    border: solid 1px #5057ef;
+  }
 `;
 
 export const Link = styled.img`
@@ -40,7 +41,7 @@ export const Link = styled.img`
 
 export const Copied = styled.div`
   display: ${(props: StyleProps) => props.copied ? 'block' : 'none'};
-  width: ${(props: StyleProps) => `${props.width}px`};
+  width: 195px;
   height: 24px;
   border-radius: 2px;
   box-shadow: 0 0 6px 0 rgba(0, 0, 0, 0.12);

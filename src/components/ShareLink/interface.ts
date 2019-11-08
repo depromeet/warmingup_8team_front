@@ -1,9 +1,9 @@
 export interface Props {
   link: string,
-  width: number
+  width?: number
 }
 
 export interface StyleProps {
-  width: number
+  width?: number
   copied?: boolean
 }
