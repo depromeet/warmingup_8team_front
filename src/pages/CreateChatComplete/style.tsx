@@ -14,7 +14,7 @@ export const Title = styled.div`
 `;
 
 export const Text = styled.div`
-  margin: 16px 0 62px;
+  margin: 16px 0 24px;
   font-size: 16px;
   font-weight: 300;
   font-stretch: normal;
@@ -25,30 +25,17 @@ export const Text = styled.div`
   color: #2b2b2b;
 `;
 
-export const LinkBox = styled.div`
-  font-size: 18px;
-  width: 640px;
-  height: 35px;
-  margin: auto;
-  padding-top: 7px;
-  border: solid 0.5px #9b9b9b;
-`;
-
-export const Link = styled.img`
-  margin-right: 8px;
-`;
-
 export const Button = styled.button`
   font-size: 16px;
-  font-weight: normal;
-  font-stretch: normal;
-  font-style: normal;
-  line-height: normal;
-  letter-spacing: normal;
-  text-align: center;
   color: #757575;
-
   border: none;
   margin: ${(props: Style) => props.margin ? props.margin : ''};
   cursor: pointer;
+  width: 155px;
+  height: 48px;
+  
+  &:hover {
+    border-radius: 24px;
+    box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.16);
+  }
 `;

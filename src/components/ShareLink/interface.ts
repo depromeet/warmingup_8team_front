@@ -5,4 +5,5 @@ export interface Props {
 
 export interface StyleProps {
   width: number
+  copied?: boolean
 }

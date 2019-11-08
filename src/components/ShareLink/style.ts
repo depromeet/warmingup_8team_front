@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { Props, StyleProps } from './interface';
+import {StyleProps} from "./interface";
 
 export const LinkBox = styled.div`
   font-size: 18px;
@@ -25,6 +25,10 @@ export const LinkBox = styled.div`
     letter-spacing: normal;
     color: #2b2b2b;
   }
+  
+  &:hover {
+    text-decoration: underline;
+  }
 `;
 
 export const Link = styled.img`
@@ -32,4 +36,21 @@ export const Link = styled.img`
   position: absolute;
   left: 16px;
   top: 20px;
+`;
+
+export const Copied = styled.div`
+  display: ${(props: StyleProps) => props.copied ? 'block' : 'none'};
+  width: ${(props: StyleProps) => `${props.width}px`};
+  height: 24px;
+  border-radius: 2px;
+  box-shadow: 0 0 6px 0 rgba(0, 0, 0, 0.12);
+  background-color: #d8dcfd;
+  font-size: 16px;
+  color: #2b2b2b;
+  vertical-align: center;
+  padding: 16px 0;
+  position: absolute;
+  bottom: 121px;
+  left: 50%;
+  margin-left: -158px;
 `;

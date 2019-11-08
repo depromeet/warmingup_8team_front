@@ -63,19 +63,6 @@ export const Input = styled.input`
   }
 `;
 
-export const Text2 = styled.div`
-  font-size: 14px;
-  font-weight: normal;
-  font-stretch: normal;
-  font-style: normal;
-  line-height: normal;
-  letter-spacing: normal;
-  color: #757575;
-  text-align: left;
-  margin-top: 5px;
-  margin-bottom: 25px;
-`;
-
 export const Skip = styled.button`
   font-size: 16px;
   font-weight: normal;
