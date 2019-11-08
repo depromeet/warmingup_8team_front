@@ -12,7 +12,11 @@ export const NameInput = styled.input`
   height: 48px;
   padding-left: 30px;
   margin-top: 17px;
-  border: ${(props: Style) => props.error ? 'solid 1px #d0021b;' : 'solid 1px #dedede'};
+  border: ${(props: Style) => props.error ? 'solid 1px #d0021b;' : 'solid 1px #5057ef'};
+  &:hover {
+    border: solid 1px #929292;
+  }
+  autofocus: true;
 `;
 
 export const Error = styled.div`
@@ -64,13 +68,22 @@ export const FileInput = styled.input`
   display: none;
 `;
 
+export const Circle = styled.div`
+  height: 338px;
+  width: 338px;
+  background-color: rgba(225,225,225,0.48);
+  margin: auto;
+  border-radius: 50%;
+`;
+
 export const Upload = styled.button`
   color: #757575;
-  margin-top: ${(props: Style) => props.margin ? `${props.margin}px` : ''};
+  margin: ${(props: Style) => props.margin};
   width: 155px;
   height: 40px;
   border-radius: 30px;
   box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.12);
   border: solid 1px #dedede;
   cursor: pointer;
+  position: ${(props: Style) => props.error ? '' : 'absolute'}
 `;

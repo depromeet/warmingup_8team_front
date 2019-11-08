@@ -16,6 +16,11 @@ const CreateChat: React.FC = _ => {
   const dispatch = useDispatch();
   let history = useHistory();
 
+  const inputRef: any = React.createRef();
+  useEffect(() => {
+    inputRef.current.focus()
+  },[]);
+
   useEffect(() => {
     if (chatName && chatName.length <= 12 && imgFile) {
       setStartBtn(true);
@@ -85,6 +90,7 @@ const CreateChat: React.FC = _ => {
           value={chatName}
           onChange={e => setChatName(e.currentTarget.value)}
           error={chatName.length === 0}
+          ref={inputRef}
         />
         {
           chatName.length === 0 ?
@@ -119,8 +125,9 @@ const CreateChat: React.FC = _ => {
                   id="file"
                   onChange={handleChange}
                 />
+                <styled.Circle/>
                 <styled.Upload
-                  margin={241}
+                  margin={'-48px 0 0 -78px'}
                   onClick={() => handleClick()}
                 >
                   이미지 선택하기
@@ -143,8 +150,9 @@ const CreateChat: React.FC = _ => {
                   onChange={handleChange}
                 />
                 <styled.Upload
-                  margin={217}
+                  margin={'217px 0 0 0'}
                   onClick={() => handleClick()}
+                  error={true}
                 >
                   이미지 선택하기
               </styled.Upload>

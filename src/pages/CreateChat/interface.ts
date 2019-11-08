@@ -1,5 +1,5 @@
 export interface Style {
   backgroundImage?: string,
-  margin?: number
+  margin?: string
   error?: boolean
 }

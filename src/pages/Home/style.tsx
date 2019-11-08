@@ -20,3 +20,7 @@ export const Title = styled.div`
   margin-bottom: 12px;
   color: #5057ef;
 `;
+
+export const Footer = styled.div`
+  height: 381px;
+`;
