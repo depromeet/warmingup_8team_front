@@ -55,7 +55,9 @@ const Header: React.FC = () => {
                 {profile.name}
               </styled.User>
             ) : (
-              <styled.NonUser>
+              <styled.NonUser
+                onClick={() => history.push('/')}
+              >
                 <styled.DefaultAvatar src={Profile} />
                 로그인
               </styled.NonUser>

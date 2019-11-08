@@ -6,7 +6,10 @@ export const Nav = styled.div`
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
-  margin-top: 72px;
+  height: 76px;
+  box-shadow: 0 4px 6px 0 rgba(0, 0, 0, 0.06);
+  background-color: rgba(255, 255, 255, 0.88);
+  padding: 10px 20px;
 `;
 
 export const TitleWrapper = styled.div`
@@ -37,7 +40,7 @@ export const Add = styled.img`
 
 export const Content = styled.div`
   flex: 1;
-  padding: 40px 0;
+  padding: 40px 10px;
   display: flex;
   flex-direction: column;
   overflow: scroll;
@@ -48,7 +51,7 @@ export const Content = styled.div`
 `;
 
 export const InputArea = styled.div`
-  width: 100%;
+  width: 98%;
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -56,16 +59,17 @@ export const InputArea = styled.div`
   margin-bottom: 40px;
 `;
 
-export const UploadButton = styled.button`
+export const UploadButton = styled.img`
   width: 30px;
   height: 30px;
-  margin-right: 50px;
+  margin: 0 24px 0 33px;
+  cursor: pointer;
 `;
 
 export const Input = styled.textarea`
   height: 28px;
   border-radius: 29px;
-  border: solid 0.5px #979797;
+  border: solid 0.5px #bdbdbd;
   background-color: #ffffff;
   flex: 1;
   resize: none;

@@ -4,7 +4,7 @@ import { Chat, Modal } from 'modules';
 import { Props as ChatProps } from 'modules/Chat/interface';
 import { Props } from './interface';
 import * as styled from './style';
-import { MemberPlus ,Add } from 'assets';
+import {MemberPlus, Add, Photo} from 'assets';
 import {useHistory} from "react-router";
 import useModal from "../../utils/useModal";
 
@@ -25,7 +25,10 @@ const View: React.FC<Props> = ({
 
   return (
     <Container style={{
-      height: '100vh',
+      width: '960px',
+      height: '877px',
+      boxShadow: '0 0 4px 0 rgba(0, 0, 0, 0.12)',
+      margin: '127px 480px 136px 480px',
     }}>
       <styled.Nav>
         <styled.TitleWrapper>
@@ -63,9 +66,9 @@ const View: React.FC<Props> = ({
       </styled.Content>
 
       <styled.InputArea>
-        <styled.UploadButton>
-
-        </styled.UploadButton>
+        <styled.UploadButton
+          src={Photo}
+        />
 
         <styled.Input
           value={input}

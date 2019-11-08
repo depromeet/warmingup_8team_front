@@ -7,6 +7,7 @@ const Add = require('./images/add.svg');
 const ModalImage = require('./images/modal.svg');
 const Close = require('./images/close.svg');
 const HomeImage = require('./images/home.svg');
+const Photo = require('./images/photo.svg');
 
 export {
   Logo,
@@ -18,4 +19,5 @@ export {
   Add,
   ModalImage,
   Close,
+  Photo
 };
