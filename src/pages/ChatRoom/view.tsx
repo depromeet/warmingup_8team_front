@@ -20,14 +20,8 @@ const View: React.FC<Props> = ({
   chatContent,
   chatKey,
 }) => {
-  const [modal, setModal] = useState(false);
   const history = useHistory();
   const {isShowing, toggle} = useModal();
-
-  // const modalOpen = () => {
-  //   setModal(true);
-  //   console.log('open')
-  // };
 
   return (
     <Container style={{

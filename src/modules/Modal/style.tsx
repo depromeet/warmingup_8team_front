@@ -11,22 +11,26 @@ export const Background = styled.div`
   display: block;
 `;
 
+export const ModalImage = styled.img`
+  border-radius: 10px 10px 0 0;
+`;
+
 export const Modal = styled.div`
   width: 960px;
   height: 456px;
   border-radius: 10px;
   margin: 15% auto;
-  padding: 20px 40px;
   width: 50%;
   background: white;
 `;
 
-export const Close = styled.span`
+export const Close = styled.div`
   color: #aaa;
-  float: right;
   font-size: 28px;
   font-weight: bold;
-  margin: -8px -15px 0 0;
+  right: 27%;
+  position: absolute;
+  margin-top: 24px;
 
   &:hover {
     color: black;
@@ -35,10 +39,13 @@ export const Close = styled.span`
   }
 `;
 
+export const Wrapper = styled.div`
+  padding: 36px 40px;
+`;
+
 export const H1 = styled.div`
   font-size: 30px;
   font-weight: bold;
-  margin-top: 75px;
   text-align: left;
   color: #5057ef;
 `;

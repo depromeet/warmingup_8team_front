@@ -5,6 +5,8 @@ const Profile = require('./images/profile.svg');
 const HomeImage = require('./images/home.png');
 const Kakao = require('./images/kakao.png');
 const Add = require('./images/add.svg');
+const ModalImage = require('./images/modal.svg');
+const Close = require('./images/close.svg');
 
 
 export {
@@ -14,5 +16,7 @@ export {
   Profile,
   HomeImage,
   Kakao,
-  Add
+  Add,
+  ModalImage,
+  Close
 };
